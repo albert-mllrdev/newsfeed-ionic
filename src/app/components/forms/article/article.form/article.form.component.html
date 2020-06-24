@@ -1,0 +1,28 @@
+<ion-content padding>
+  <form [formGroup]="articleForm">
+    <ion-list>
+        <ion-item>
+            <ion-label position="stacked">Title</ion-label>
+            <ion-input formControlName="title" type="text" autoGrow="true"></ion-input>
+        </ion-item>
+    </ion-list>    
+    <ion-list>
+      <ion-item>
+          <ion-label position="stacked">Source</ion-label>
+          <ion-input formControlName="source" type="text" autoGrow="true"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Description</ion-label>
+        <ion-textarea formControlName="description" autoGrow="true"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Content</ion-label>
+        <ion-textarea formControlName="content" autoGrow="true"></ion-textarea>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

@@ -1,0 +1,10 @@
+<ion-card (click)="showArticle(article.id)" *ngFor="let article of articles" class="ion-text-left">
+  <ion-card-header>
+    <ion-card-subtitle>{{article.source}}</ion-card-subtitle>
+  </ion-card-header>    
+  <ion-card-content>{{article.title}}</ion-card-content>
+</ion-card>
+
+<ion-card *ngIf="!articles.length" class="ion-text-left no-records">
+  <ion-card-content>No records found</ion-card-content>
+</ion-card>

@@ -14,7 +14,18 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitReturns": true,    
+    "paths": {      
+      "@interfaces/*": ["./src/app/interfaces/*"],
+      "@forms/*": ["./src/app/components/forms/*"],
+      "@lists/*": ["./src/app/components/lists/*"],
+      "@modal/*": ["./src/app/pages/modals/*"],
+      "@data/*": ["./src/app/services/*"]       
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

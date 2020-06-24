@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Article</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="confirmClose()"><ion-icon name="backspace"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="saveArticle()" [disabled]="!isValid">Save</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-article-form [articleId]="articleId" (validationStatusChange)='validationStatusChange($event)'></app-article-form>
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="center" slot="fixed" *ngIf="articleId">
+  <ion-fab-button (click)="confirmDelete()">
+    <ion-icon name="trash"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
