@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
 
   constructor(
     private articleDataService: ArticleDataService,
-    public modalController: ModalController,
+    public modalController: ModalController
   ) {}
 
   ngOnInit() {

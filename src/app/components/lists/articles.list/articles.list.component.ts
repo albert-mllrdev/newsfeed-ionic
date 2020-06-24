@@ -7,7 +7,7 @@ import { ArticleModalPage } from '@modal/article.modal/article.modal.page';
 @Component({
   selector: 'app-articles-list',
   templateUrl: './articles.list.component.html',
-  styleUrls: ['./articles.list.component.scss'],
+  styleUrls: ['./articles.list.component.scss']
 })
 export class ArticlesListComponent implements OnInit {
 
@@ -23,7 +23,7 @@ export class ArticlesListComponent implements OnInit {
       component: ArticleModalPage,
       componentProps: {
         articleId,
-      },
+      }
     });
 
     modal.onDidDismiss().then((returnData) => {

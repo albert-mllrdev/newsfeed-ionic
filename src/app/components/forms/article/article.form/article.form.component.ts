@@ -20,7 +20,7 @@ export class ArticleFormComponent implements OnInit {
     description: new FormControl('', Validators.required),
     source: new FormControl('', Validators.required),
     content: new FormControl('', Validators.required),
-    publishedAt: new FormControl(''),
+    publishedAt: new FormControl('')
   });
 
   get formData(){

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Article</ion-title>
+    <ion-title class="ion-text-center">{{ (articleId) ? 'Edit' : 'New'}} Article</ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="confirmClose()"><ion-icon name="backspace"></ion-icon></ion-button>
     </ion-buttons>

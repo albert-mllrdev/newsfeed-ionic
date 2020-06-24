@@ -35,7 +35,7 @@ export class ArticleModalPage implements OnInit {
       const alert = await this.alertController.create({
         header: 'Discard changes',
         message: 'Are you sure?',
-        buttons: [          
+        buttons: [
           {
             text: 'No'
           },
@@ -68,7 +68,7 @@ export class ArticleModalPage implements OnInit {
   validationStatusChange(isValid: boolean){
     this.isValid = isValid;
   }
-  
+
   async showToast(toastMessage: string) {
     const toast = await this.toastController.create({
       message: toastMessage,
@@ -82,7 +82,7 @@ export class ArticleModalPage implements OnInit {
     const alert = await this.alertController.create({
       header: 'Delete',
       message: 'Are you sure?',
-      buttons: [        
+      buttons: [
         {
           text: 'No'
         },

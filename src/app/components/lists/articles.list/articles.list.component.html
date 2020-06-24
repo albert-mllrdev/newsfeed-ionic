@@ -1,8 +1,15 @@
-<ion-card (click)="showArticle(article.id)" *ngFor="let article of articles" class="ion-text-left">
+<ion-card (click)="showArticle(article.id)" *ngFor="let article of articles | orderBy: publishedAt" class="ion-text-left">
   <ion-card-header>
-    <ion-card-subtitle>{{article.source}}</ion-card-subtitle>
+    <ion-card-title>
+      {{article.source}}
+    </ion-card-title>
+    <ion-card-subtitle>
+      {{article.publishedAt | timeago}}
+    </ion-card-subtitle>
   </ion-card-header>    
-  <ion-card-content>{{article.title}}</ion-card-content>
+  <ion-card-content>
+    {{article.title}}
+  </ion-card-content>  
 </ion-card>
 
 <ion-card *ngIf="!articles.length" class="ion-text-left no-records">
