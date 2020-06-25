@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 import { IArticle } from '@interfaces/article';
-import { ArticleModalPage } from '@modal/article.modal/article.modal.page';
+import { ArticleModalComponent } from '../../modals/article.modal/article.modal.component';
 
 @Component({
   selector: 'app-articles-list',
@@ -20,7 +20,7 @@ export class ArticlesListComponent implements OnInit {
 
   async showArticle(articleId: number){
     const modal = await this.modalController.create({
-      component: ArticleModalPage,
+      component: ArticleModalComponent,
       componentProps: {
         articleId,
       }

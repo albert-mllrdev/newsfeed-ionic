@@ -1,15 +1,14 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { ModalController, AlertController, ToastController } from '@ionic/angular';
-
-import { ArticleFormComponent } from '@forms/article/article.form/article.form.component';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { ArticleFormComponent } from '@forms/article.form/article.form.component';
+import { ModalController, ToastController, AlertController } from '@ionic/angular';
 import { ArticleDataService } from '@data/article.data.service';
 
 @Component({
   selector: 'app-article.modal',
-  templateUrl: './article.modal.page.html',
-  styleUrls: ['./article.modal.page.scss']
+  templateUrl: './article.modal.component.html',
+  styleUrls: ['./article.modal.component.scss'],
 })
-export class ArticleModalPage implements OnInit {
+export class ArticleModalComponent implements OnInit {
   isValid!: boolean;
 
   @Input() articleId!: number;
