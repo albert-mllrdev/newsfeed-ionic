@@ -13,6 +13,8 @@ export class ArticlesListComponent implements OnInit {
 
   @Input() articles: IArticle[] = [];
   @Output() needReloadEvent = new EventEmitter<string>();
+  
+  articleFilter = { categoryId : ''};
 
   constructor(public modalController: ModalController) { }
 
@@ -33,5 +35,9 @@ export class ArticlesListComponent implements OnInit {
     });
 
     return await modal.present();
+  }
+  
+  filterCategory(categoryId?: number){
+    this.articleFilter.categoryId = (categoryId) ? categoryId.toString() : '';
   }
 }

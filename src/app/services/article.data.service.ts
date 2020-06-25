@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { IArticle } from '../interfaces/article';
+import { ICategory } from '@interfaces/category';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class ArticleDataService {
 
   hasInitialLoad = false;
   articles: IArticle [] = [];
+  categories: ICategory [] = [];
 
   constructor(private http: HttpClient) {  }
   
@@ -52,5 +54,19 @@ export class ArticleDataService {
 
   deleteArticle(articleId: number){
     this.articles = this.articles.filter((article: IArticle) => article.id !== articleId);
+  }
+    
+  getCategories(): Observable<ICategory[]> {   
+    if (this.categories?.length){
+      return of(this.categories);
+    }
+
+    return this.http.get<ICategory[]>('assets/categories.json')
+      .pipe(
+        map((categories: ICategory[]) => {
+          this.categories = categories;
+          return categories;
+        })
+      );
   }
 }

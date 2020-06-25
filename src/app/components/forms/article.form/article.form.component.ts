@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ArticleDataService } from '@data/article.data.service';
 import { IArticle } from '@interfaces/article';
+import { ICategory } from '@interfaces/category';
 
 @Component({
   selector: 'app-article-form',
@@ -16,8 +17,8 @@ export class ArticleFormComponent implements OnInit {
 
   articleForm = new FormGroup({
     id: new FormControl(''),
+    categoryId: new FormControl('', Validators.required),
     title: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required),
     source: new FormControl('', Validators.required),
     content: new FormControl('', Validators.required),
     publishedAt: new FormControl('')
@@ -30,20 +31,21 @@ export class ArticleFormComponent implements OnInit {
   get hasChanges(){
     return this.articleForm.dirty;
   }
+  
+  categories: ICategory[] = [];
 
   constructor(private articleDataService: ArticleDataService) { }
 
   ngOnInit() {
     this.loadArticle();
+    this.loadCategories();
     this.bindValidation();
   }
 
   bindValidation(){
-    this.articleForm.valueChanges.subscribe(
-      () => {
-        this.validationStatusChange.emit((this.articleForm.status.toLowerCase() === 'valid'));
-      },
-    );
+    this.articleForm.valueChanges.subscribe(() => {
+      this.validationStatusChange.emit((this.articleForm.status.toLowerCase() === 'valid'));
+    });
   }
 
   loadArticle(){
@@ -54,5 +56,11 @@ export class ArticleFormComponent implements OnInit {
         }
       });
     }
+  }
+
+  loadCategories(){
+    this.articleDataService.getCategories().subscribe((categories: ICategory[]) => {
+      this.categories = categories;
+    });
   }
 }

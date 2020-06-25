@@ -1,14 +1,13 @@
-<ion-header>
+<ion-header  class="main-header">
   <ion-toolbar>
     <ion-buttons slot="start">  
       <ion-menu-button color="dark"></ion-menu-button>   
     </ion-buttons>  
     <ion-title class="ion-text-center">
       News Feed
-    </ion-title>
+    </ion-title>   
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -21,7 +20,7 @@
   </div>
 
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="openModal()">
+    <ion-fab-button (click)="newArticle()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

@@ -12,6 +12,7 @@ export class ArticleModalComponent implements OnInit {
   isValid!: boolean;
 
   @Input() articleId!: number;
+  @Input() categoryId!: number;
   @ViewChild(ArticleFormComponent) articleForm!: ArticleFormComponent;
 
   constructor(

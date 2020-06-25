@@ -11,7 +11,6 @@ import { ArticleModalComponent } from 'src/app/components/modals/article.modal/a
 })
 export class ArticlePage implements OnInit {
   articles: IArticle[] = [];
-  dataReturned: [] | undefined;
 
   constructor(
     private articleDataService: ArticleDataService,
@@ -28,9 +27,9 @@ export class ArticlePage implements OnInit {
     });
   }
 
-  async openModal() {
+  async newArticle() {
     const modal = await this.modalController.create({
-      component: ArticleModalComponent,
+      component: ArticleModalComponent
     });
 
     return await modal.present();

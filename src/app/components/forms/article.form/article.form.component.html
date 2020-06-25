@@ -5,19 +5,21 @@
             <ion-label position="stacked">Title</ion-label>
             <ion-input formControlName="title" type="text" autoGrow="true"></ion-input>
         </ion-item>
-    </ion-list>    
+    </ion-list>
+    <ion-list>
+      <ion-item>
+          <ion-label position="stacked">Category</ion-label>
+          <ion-select formControlName="categoryId" interface="action-sheet">
+            <ion-select-option *ngFor="let category of categories | orderBy: 'name'" value="{{category.id}}">{{ category.name | titlecase }}</ion-select-option>
+          </ion-select>
+      </ion-item>
+  </ion-list>   
     <ion-list>
       <ion-item>
           <ion-label position="stacked">Source</ion-label>
-          <ion-input formControlName="source" type="text" autoGrow="true"></ion-input>
+          <ion-input formControlName="source" type="text"></ion-input>
       </ion-item>
-    </ion-list>
-    <ion-list>
-      <ion-item>
-        <ion-label position="stacked">Description</ion-label>
-        <ion-textarea formControlName="description" autoGrow="true"></ion-textarea>
-      </ion-item>
-    </ion-list>
+    </ion-list>   
     <ion-list>
       <ion-item>
         <ion-label position="stacked">Content</ion-label>
