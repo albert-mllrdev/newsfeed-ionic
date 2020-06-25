@@ -24,7 +24,8 @@
       "@forms/*": ["./src/app/components/forms/*"],
       "@lists/*": ["./src/app/components/lists/*"],
       "@modal/*": ["./src/app/pages/modals/*"],
-      "@data/*": ["./src/app/services/*"]       
+      "@data/*": ["./src/app/services/*"],
+      "@pipes/*": ["./src/app/pipes/*"]    
     }
   },
   "angularCompilerOptions": {

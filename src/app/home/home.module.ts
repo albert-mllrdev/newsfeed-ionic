@@ -5,10 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { OrderModule } from 'ngx-order-pipe';
-import { TimeagoModule, TimeagoClock } from 'ngx-timeago';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { ArticlesListComponent } from '@lists/articles.list/articles.list.component';
+import { TimeAgoPipe } from '@pipes/time-ago.pipe';
 
 @NgModule({
   imports: [
@@ -16,9 +16,8 @@ import { ArticlesListComponent } from '@lists/articles.list/articles.list.compon
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    OrderModule,
-    TimeagoModule.forRoot()
+    OrderModule    
   ],
-  declarations: [HomePage, ArticlesListComponent]
+  declarations: [HomePage, ArticlesListComponent, TimeAgoPipe]
 })
 export class HomePageModule {}
