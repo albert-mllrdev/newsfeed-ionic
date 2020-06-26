@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IArticle } from '@interfaces/article';
 import { ArticleDataService } from '@data/article.data.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, IonContent } from '@ionic/angular';
 
 import { ArticlesListComponent } from '@lists/articles.list/articles.list.component';
 import { ArticleModalComponent } from '@modals/article.modal/article.modal.component';
@@ -15,7 +15,8 @@ export class ArticlePage implements OnInit {
   articles: IArticle[] = [];
 
   @ViewChild(ArticlesListComponent) articleList!: ArticlesListComponent;
-
+  @ViewChild(IonContent) ionContent!: IonContent;
+  
   constructor(
     private articleDataService: ArticleDataService,
     public modalController: ModalController
@@ -43,6 +44,7 @@ export class ArticlePage implements OnInit {
   }
 
   setFilterCategory(categoryId: number){
+    this.ionContent.scrollToTop();
     this.articleList.setCategoryFilter(categoryId);
   }
 
