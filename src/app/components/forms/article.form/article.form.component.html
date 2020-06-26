@@ -10,7 +10,7 @@
       <ion-item>
           <ion-label position="stacked">Category</ion-label>
           <ion-select formControlName="categoryId" interface="action-sheet">
-            <ion-select-option *ngFor="let category of categories | titlecase | orderBy: 'name'" value="{{category.id}}">{{ category.name | titlecase }}</ion-select-option>
+            <ion-select-option *ngFor="let category of categories | orderBy: 'name'" value="{{category.id}}">{{ category.name | titlecase }}</ion-select-option>
           </ion-select>
       </ion-item>
   </ion-list>   
