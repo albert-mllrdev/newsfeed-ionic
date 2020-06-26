@@ -11,8 +11,8 @@ import { ICategory } from '@interfaces/category';
   styleUrls: ['./article.form.component.scss'],
 })
 export class ArticleFormComponent implements OnInit {
-
   @Input() articleId!: number;
+  @Input() defaultCategoryId!: number;
   @Output() validationStatusChange = new EventEmitter();
 
   articleForm = new FormGroup({
@@ -55,6 +55,9 @@ export class ArticleFormComponent implements OnInit {
           this.articleForm.setValue(article);
         }
       });
+    }
+    else if (this.defaultCategoryId){
+      this.articleForm.patchValue({ categoryId: this.defaultCategoryId });
     }
   }
 

@@ -1,16 +1,14 @@
-<app-categories-menu (setCategoryEvent)='filterCategory($event)'></app-categories-menu>
-
-<ion-card (click)="showArticle(article.id)" *ngFor="let article of articles | orderBy: publishedAt | filterBy: articleFilter" class="ion-text-left">
+<ion-card (click)="showArticle(article.id)" *ngFor="let article of articles | orderBy: publishedAt | filterBy: articleFilter | filterBy: articleTextFilter" class="ion-text-left">
   <ion-card-header>
-    <ion-card-title>{{article.title}}</ion-card-title>
+    <ion-card-title>{{article.title | titlecase}}</ion-card-title>
     <ion-card-subtitle>{{article.source}}</ion-card-subtitle>
   </ion-card-header>
   <ion-card-content>
-    {{ (article.content.length > 145) ? (article.content | slice:0:145) + '..' : (article.content) }}
+    <ion-text>{{ (article.content.length > 175) ? (article.content | slice:0:175) + '...' : (article.content) }}</ion-text>
     <ion-card-subtitle>{{article.publishedAt | timeAgo}}</ion-card-subtitle>
   </ion-card-content>  
 </ion-card>
 
-<ion-card *ngIf="!(articles | filterBy: articleFilter).length" class="ion-text-left no-records">
+<ion-card *ngIf="!(articles | filterBy: articleFilter | filterBy: articleTextFilter).length" class="ion-text-left no-records">
   <ion-card-content>No records found</ion-card-content>
 </ion-card>

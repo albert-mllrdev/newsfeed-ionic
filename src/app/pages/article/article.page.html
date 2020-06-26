@@ -1,26 +1,29 @@
-<ion-header  class="main-header">
-  <ion-toolbar>
-    <ion-buttons slot="start">  
-      <ion-menu-button color="dark"></ion-menu-button>   
-    </ion-buttons>  
-    <ion-title class="ion-text-center">
+
+<app-categories-menu (setCategoryEvent)='setFilterCategory($event)'></app-categories-menu>
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title class="ion-text-left">
       News Feed
-    </ion-title>   
+    </ion-title>    
+    <ion-buttons slot="end">  
+      <ion-menu-button color="light"><ion-icon name="options-outline"></ion-icon></ion-menu-button>   
+    </ion-buttons>  
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
+    <ion-toolbar color="dark">
       <ion-title size="large" class="ion-text-center">News Feed</ion-title>
     </ion-toolbar>
   </ion-header>
   
   <div id="container">
+    <ion-searchbar showCancelButton="never" (ionChange)="setFilterSearch($event)"></ion-searchbar>
     <app-articles-list [articles]="articles" (needReloadEvent)="loadArticles()"></app-articles-list>
   </div>
 
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="newArticle()">
+    <ion-fab-button (click)="newArticle()" color="success">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

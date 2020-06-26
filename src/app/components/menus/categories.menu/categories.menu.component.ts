@@ -9,7 +9,6 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./categories.menu.component.scss'],
 })
 export class CategoriesMenuComponent implements OnInit {
-
   @Output() setCategoryEvent = new EventEmitter();
   
   categories: ICategory[] = [];
@@ -32,7 +31,11 @@ export class CategoriesMenuComponent implements OnInit {
 
   setCategory(categoryId?: number | null){    
     this.currentCategoryId = categoryId;
-    this.menuController.close();
+    this.close();
     this.setCategoryEvent.emit(categoryId);
+  }
+
+  close(){
+    this.menuController.close();
   }
 }

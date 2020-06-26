@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-title class="ion-text-center">{{ (articleId) ? 'Edit' : 'New'}} Article</ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="confirmClose()"><ion-icon name="backspace"></ion-icon></ion-button>
@@ -11,11 +11,11 @@
 </ion-header>
 
 <ion-content>
-  <app-article-form [articleId]="articleId" (validationStatusChange)='validationStatusChange($event)' [defaultCategoryId]="categoryId"></app-article-form>
+  <app-article-form [articleId]="articleId"  [defaultCategoryId]="defaultCategoryId" (validationStatusChange)='validationStatusChange($event)'></app-article-form>
 </ion-content>
 
 <ion-fab vertical="bottom" horizontal="center" slot="fixed" *ngIf="articleId">
-  <ion-fab-button (click)="confirmDelete()">
+  <ion-fab-button (click)="confirmDelete()" color="danger">
     <ion-icon name="trash"></ion-icon>
   </ion-fab-button>
 </ion-fab>

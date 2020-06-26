@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IArticle } from '@interfaces/article';
 import { ArticleDataService } from '@data/article.data.service';
 import { ModalController } from '@ionic/angular';
 import { ArticleModalComponent } from 'src/app/components/modals/article.modal/article.modal.component';
+import { ArticlesListComponent } from '@lists/articles.list/articles.list.component';
 
 @Component({
   selector: 'app-article',
@@ -11,6 +12,8 @@ import { ArticleModalComponent } from 'src/app/components/modals/article.modal/a
 })
 export class ArticlePage implements OnInit {
   articles: IArticle[] = [];
+
+  @ViewChild(ArticlesListComponent) articleList!: ArticlesListComponent;
 
   constructor(
     private articleDataService: ArticleDataService,
@@ -27,11 +30,22 @@ export class ArticlePage implements OnInit {
     });
   }
 
-  async newArticle() {
+  async newArticle() {    
     const modal = await this.modalController.create({
-      component: ArticleModalComponent
+      component: ArticleModalComponent,
+      componentProps: {
+        defaultCategoryId: this.articleList.getCategoryFilter()
+      }
     });
 
     return await modal.present();
+  }
+
+  setFilterCategory(categoryId: number){
+    this.articleList.setCategoryFilter(categoryId);
+  }
+
+  setFilterSearch(event: CustomEvent){
+    this.articleList.setFilterSearch(event.detail.value);
   }
 }

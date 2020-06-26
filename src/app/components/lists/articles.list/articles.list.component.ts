@@ -10,11 +10,11 @@ import { ArticleModalComponent } from '../../modals/article.modal/article.modal.
   styleUrls: ['./articles.list.component.scss']
 })
 export class ArticlesListComponent implements OnInit {
-
   @Input() articles: IArticle[] = [];
   @Output() needReloadEvent = new EventEmitter<string>();
   
-  articleFilter = { categoryId : ''};
+  articleFilter = { categoryId : '' };
+  articleTextFilter = { $or: [{ title: ''}, { source: '' }, { content: '' }] };
 
   constructor(public modalController: ModalController) { }
 
@@ -24,7 +24,7 @@ export class ArticlesListComponent implements OnInit {
     const modal = await this.modalController.create({
       component: ArticleModalComponent,
       componentProps: {
-        articleId,
+        articleId
       }
     });
 
@@ -37,7 +37,17 @@ export class ArticlesListComponent implements OnInit {
     return await modal.present();
   }
   
-  filterCategory(categoryId?: number){
+  getCategoryFilter(){
+    return this.articleFilter.categoryId;
+  }
+
+  setCategoryFilter(categoryId?: number){
     this.articleFilter.categoryId = (categoryId) ? categoryId.toString() : '';
+  }
+
+  setFilterSearch(searchText: string){
+    this.articleTextFilter = { 
+      $or: [{ title: searchText }, { source: searchText }, { content: searchText }] 
+    };
   }
 }

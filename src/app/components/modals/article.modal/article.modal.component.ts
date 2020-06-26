@@ -8,11 +8,11 @@ import { ArticleDataService } from '@data/article.data.service';
   templateUrl: './article.modal.component.html',
   styleUrls: ['./article.modal.component.scss'],
 })
-export class ArticleModalComponent implements OnInit {
+export class ArticleModalComponent implements OnInit {  
   isValid!: boolean;
 
   @Input() articleId!: number;
-  @Input() categoryId!: number;
+  @Input() defaultCategoryId!: number;
   @ViewChild(ArticleFormComponent) articleForm!: ArticleFormComponent;
 
   constructor(
