@@ -1,7 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { MenuController } from '@ionic/angular';
+
 import { ArticleDataService } from '@data/article.data.service';
 import { ICategory } from '@interfaces/category';
-import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-categories-menu',
@@ -17,7 +18,7 @@ export class CategoriesMenuComponent implements OnInit {
   constructor(  
     private articleDataService: ArticleDataService,
     private menuController: MenuController
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.loadCategories();

@@ -23,7 +23,8 @@
       "@interfaces/*": ["./src/app/interfaces/*"],
       "@forms/*": ["./src/app/components/forms/*"],
       "@lists/*": ["./src/app/components/lists/*"],
-      "@modal/*": ["./src/app/pages/modals/*"],
+      "@modals/*": ["./src/app/components/modals/*"],
+      "@menus/*": ["./src/app/components/menus/*"],
       "@data/*": ["./src/app/services/*"],
       "@pipes/*": ["./src/app/pipes/*"]    
     }

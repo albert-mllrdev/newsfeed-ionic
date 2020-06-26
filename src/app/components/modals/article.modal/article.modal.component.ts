@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { ArticleFormComponent } from '@forms/article.form/article.form.component';
 import { ModalController, ToastController, AlertController } from '@ionic/angular';
+
+import { ArticleFormComponent } from '@forms/article.form/article.form.component';
 import { ArticleDataService } from '@data/article.data.service';
 
 @Component({
@@ -30,8 +31,24 @@ export class ArticleModalComponent implements OnInit {
     });
   }
 
+  saveArticle(){
+    this.showToast((this.articleForm.formData.id) ? 'Article saved' : 'Article added');
+    this.articleDataService.saveArticle(this.articleForm.formData);
+    this.close(true);
+  }
+
+  deleteArticle(){
+    this.showToast('Article deleted');
+    this.articleDataService.deleteArticle(this.articleId);
+    this.close(true);
+  }
+
+  validationStatusChange(isValid: boolean){
+    this.isValid = isValid;
+  }
+
   async confirmClose(){
-    if (this.articleForm.hasChanges){
+    if (this.articleForm.hasChanges) {
       const alert = await this.alertController.create({
         header: 'Discard changes',
         message: 'Are you sure?',
@@ -48,34 +65,10 @@ export class ArticleModalComponent implements OnInit {
         ]
       });
       await alert.present();
-    }else{
+    } 
+    else {
       this.close();
     }
-  }
-
-  saveArticle(){
-    this.articleDataService.saveArticle(this.articleForm.formData);
-    this.showToast('Article saved.');
-    this.close(true);
-  }
-
-  deleteArticle(){
-    this.articleDataService.deleteArticle(this.articleId);
-    this.showToast('Article deleted.');
-    this.close(true);
-  }
-
-  validationStatusChange(isValid: boolean){
-    this.isValid = isValid;
-  }
-
-  async showToast(toastMessage: string) {
-    const toast = await this.toastController.create({
-      message: toastMessage,
-      duration: 2000,
-      color: 'dark'
-    });
-    toast.present();
   }
 
   async confirmDelete(){
@@ -95,5 +88,14 @@ export class ArticleModalComponent implements OnInit {
       ]
     });
     await alert.present();
-   }
+   }   
+
+  async showToast(toastMessage: string) {
+    const toast = await this.toastController.create({
+      message: toastMessage,
+      duration: 2000,
+      color: 'dark'
+    });
+    toast.present();
+  }  
 }

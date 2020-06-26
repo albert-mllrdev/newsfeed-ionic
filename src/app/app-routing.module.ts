@@ -15,7 +15,6 @@ const routes: Routes = [
     redirectTo: 'article',
     pathMatch: 'full'
   }
-
 ];
 
 @NgModule({

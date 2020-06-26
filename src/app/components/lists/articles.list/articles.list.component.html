@@ -5,7 +5,9 @@
   </ion-card-header>
   <ion-card-content>
     <ion-text>{{ (article.content.length > 175) ? (article.content | slice:0:175) + '...' : (article.content) }}</ion-text>
-    <ion-card-subtitle class="ion-text-right ion-margin-top">{{article.publishedAt | timeAgo}}</ion-card-subtitle>
+    <ion-card-subtitle class="ion-text-right ion-margin-top">
+      <ion-icon name="time"></ion-icon> {{article.publishedAt | timeAgo}}
+    </ion-card-subtitle>
   </ion-card-content>  
 </ion-card>
 

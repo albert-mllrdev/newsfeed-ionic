@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 import { IArticle } from '@interfaces/article';
-import { ArticleModalComponent } from '../../modals/article.modal/article.modal.component';
+import { ArticleModalComponent } from '@modals/article.modal/article.modal.component';
 
 @Component({
   selector: 'app-articles-list',

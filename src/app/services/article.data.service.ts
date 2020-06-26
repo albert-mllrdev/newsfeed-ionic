@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IArticle } from '../interfaces/article';
+import { IArticle } from '@interfaces/article';
 import { ICategory } from '@interfaces/category';
 
 @Injectable({
@@ -46,7 +46,7 @@ export class ArticleDataService {
     if (articleResult){
       this.articles[this.articles.indexOf(articleResult)] = {... formData};
     } else {
-      formData.id = Math.max.apply(Math, this.articles.map((article: IArticle) => article.id)) + 1;
+      formData.id = this.createNewArticleID();
       formData.publishedAt = new Date();
       this.articles.push(formData);
     }
@@ -68,5 +68,9 @@ export class ArticleDataService {
           return categories;
         })
       );
+  }
+
+  private createNewArticleID(){
+    return (!this.articles.length) ? 1 : Math.max.apply(Math, this.articles.map((article: IArticle) => article.id)) + 1;
   }
 }

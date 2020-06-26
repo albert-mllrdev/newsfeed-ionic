@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IArticle } from '@interfaces/article';
 import { ArticleDataService } from '@data/article.data.service';
 import { ModalController } from '@ionic/angular';
-import { ArticleModalComponent } from 'src/app/components/modals/article.modal/article.modal.component';
+
 import { ArticlesListComponent } from '@lists/articles.list/articles.list.component';
+import { ArticleModalComponent } from '@modals/article.modal/article.modal.component';
 
 @Component({
   selector: 'app-article',
