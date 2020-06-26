@@ -2,7 +2,7 @@
 <app-categories-menu (setCategoryEvent)='setFilterCategory($event)'></app-categories-menu>
 <ion-header>
   <ion-toolbar color="dark">
-    <ion-title class="ion-text-left">
+    <ion-title>
       News Feed
     </ion-title>    
     <ion-buttons slot="end">  
@@ -11,14 +11,8 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" color="medium">
-  <ion-header collapse="condense">
-    <ion-toolbar color="dark">
-      <ion-title size="large" class="ion-text-center">News Feed</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
   <div id="container">
-    <ion-searchbar showCancelButton="never" (ionChange)="setFilterSearch($event)"></ion-searchbar>
+    <ion-searchbar showCancelButton="never" (ionChange)="setFilterSearch($event)" color="light"></ion-searchbar>
     <app-articles-list [articles]="articles" (needReloadEvent)="loadArticles()"></app-articles-list>
   </div>
 
