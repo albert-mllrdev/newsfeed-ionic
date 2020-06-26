@@ -1,8 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 
 import { ArticleDataService } from '@data/article.data.service';
 import { ICategory } from '@interfaces/category';
+import { IArticle } from '@interfaces/article';
 
 @Component({
   selector: 'app-categories-menu',
@@ -10,6 +11,7 @@ import { ICategory } from '@interfaces/category';
   styleUrls: ['./categories.menu.component.scss'],
 })
 export class CategoriesMenuComponent implements OnInit {
+  @Input() articles: IArticle[] = [];
   @Output() setCategoryEvent = new EventEmitter();
   
   categories: ICategory[] = [];
@@ -34,6 +36,13 @@ export class CategoriesMenuComponent implements OnInit {
     this.currentCategoryId = categoryId;
     this.close();
     this.setCategoryEvent.emit(categoryId);
+  }
+
+  getTotalArticlesInCategory(categoryId: number){
+    if (this.articles){
+      return this.articles.filter((article: IArticle)  => +article.categoryId === categoryId).length;
+    }
+    return 0;
   }
 
   close(){

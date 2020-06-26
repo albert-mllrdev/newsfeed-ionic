@@ -1,11 +1,10 @@
-
-<app-categories-menu (setCategoryEvent)='setFilterCategory($event)'></app-categories-menu>
+<app-categories-menu (setCategoryEvent)='setFilterCategory($event)' [articles]="articles"></app-categories-menu>
 <ion-header>
   <ion-toolbar color="dark">
     <ion-title>
       News Feed
     </ion-title>    
-    <ion-buttons slot="end">  
+    <ion-buttons slot="end">
       <ion-menu-button color="light"><ion-icon name="options-outline"></ion-icon></ion-menu-button>   
     </ion-buttons>  
   </ion-toolbar>
