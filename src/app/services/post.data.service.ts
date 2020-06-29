@@ -10,22 +10,21 @@ import { ICategory } from '@interfaces/category';
   providedIn: 'root'
 })
 export class PostDataService {
-
-  hasInitialLoad = false;
-  posts: IPost [] = [];
-  categories: ICategory [] = [];
+  private isInitialized  = false;
+  private posts: IPost [] = [];
+  private categories: ICategory [] = [];
 
   constructor(private http: HttpClient) {  }
   
   getPosts(): Observable<IPost[]> {
-    if (this.hasInitialLoad){
+    if (this.isInitialized ){
       return of(this.posts);
     }
 
     return this.http.get<IPost[]>('assets/posts.json')
       .pipe(
         map((posts: IPost[]) => {
-          this.hasInitialLoad = true;
+          this.isInitialized = true;
           this.posts = posts;
           return posts;
         })
