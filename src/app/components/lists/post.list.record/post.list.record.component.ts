@@ -15,7 +15,7 @@ export class PostListRecordComponent implements OnInit {
   ngOnInit() {}
 
   showComment(){
-    this.showComments = true;
+    this.showComments = !this.showComments;
   }
 
   toggleLike(){

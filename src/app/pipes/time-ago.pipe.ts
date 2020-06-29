@@ -11,12 +11,12 @@ export class TimeAgoPipe implements PipeTransform {
 
     const timeDifference = now.getTime() - sourceDate.getTime();
 
-    const seconds = Math.floor(Math.abs((timeDifference / 1000)));
-    const minutes = Math.floor(Math.abs(seconds / 60));
-    const hours = Math.floor(Math.abs(minutes / 60));
-    const days = Math.floor(Math.abs(hours / 24));
-    const months = Math.floor(now.getMonth() - sourceDate.getMonth() + (12 * (now.getFullYear() - sourceDate.getFullYear())));
-    const years = Math.floor(now.getFullYear() - sourceDate.getFullYear());
+    const seconds = Math.ceil(Math.abs((timeDifference / 1000)));
+    const minutes = Math.ceil(Math.abs(seconds / 60));
+    const hours = Math.ceil(Math.abs(minutes / 60));
+    const days = Math.ceil(Math.abs(hours / 24));
+    const months = Math.ceil(now.getMonth() - sourceDate.getMonth() + (12 * (now.getFullYear() - sourceDate.getFullYear())));
+    const years = Math.ceil(now.getFullYear() - sourceDate.getFullYear());
 
     if (seconds < 60) {
       return  (seconds <= 10) ? 'just now' : `${seconds} seconds ago`;
