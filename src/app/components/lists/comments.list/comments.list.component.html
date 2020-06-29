@@ -1,9 +1,7 @@
 <ion-list (click)="$event.stopPropagation();">
   <ion-item *ngFor="let comment of comments" class="ion-no-padding">
-    {{comment.text}}
-    <!-- <ion-text class="ion-text-align-end">
-      <ion-icon name="time"></ion-icon> {{comment.publishedAt | timeAgo}}
-    </ion-text> -->
+    <ion-text>{{comment.text}}</ion-text>
+    <ion-note slot="end">{{comment.publishedAt | timeAgo}}</ion-note>
   </ion-item>
   <ion-item>
     <form [formGroup]="commentForm" (submit)="saveComment()">

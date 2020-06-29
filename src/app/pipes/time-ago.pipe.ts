@@ -19,7 +19,7 @@ export class TimeAgoPipe implements PipeTransform {
     const years = Math.floor(now.getFullYear() - sourceDate.getFullYear());
 
     if (seconds < 60) {
-      return  (seconds <= 10) ? 'a few seconds ago' : `${seconds} seconds ago`;
+      return  (seconds <= 10) ? 'just now' : `${seconds} seconds ago`;
     }     
 
     if (minutes < 60) {
