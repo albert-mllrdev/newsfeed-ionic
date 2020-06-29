@@ -1,20 +1,25 @@
-[{
-    "id": 1,
+[ 
+{
+    "id" : 1,
+    "name": "Thoughts"
+},   
+    {
+    "id": 2,
     "name": "Business"
 },
 {
-    "id" : 2,
+    "id" : 3,
     "name": "Politics"
 },
 {
-    "id" : 3,
+    "id" : 4,
     "name": "Sports"
 },
 {
-    "id" : 4,
+    "id" : 5,
     "name": "Technology"
 },
 {
-    "id" : 5,
+    "id" : 6,
     "name": "Entertainment"
 }]

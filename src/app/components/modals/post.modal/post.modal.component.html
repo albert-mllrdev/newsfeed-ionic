@@ -1,20 +1,20 @@
 <ion-header>
   <ion-toolbar color="dark">
-    <ion-title class="ion-text-center">{{ (articleId) ? 'Edit' : 'New'}} Article</ion-title>
+    <ion-title class="ion-text-center">{{ (postId) ? 'Edit' : 'New'}} Post</ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="confirmClose()"><ion-icon name="backspace"></ion-icon></ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="saveArticle()" [disabled]="!isValid">Save</ion-button>
+      <ion-button (click)="savePost()" [disabled]="!isValid">Save</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <app-article-form [articleId]="articleId"  [defaultCategoryId]="defaultCategoryId" (validationStatusChange)='validationStatusChange($event)'></app-article-form>
+  <app-post-form [postId]="postId" [defaultCategoryId]="defaultCategoryId" (validationStatusChange)='validationStatusChange($event)'></app-post-form>
 </ion-content>
 
-<ion-fab vertical="bottom" horizontal="center" slot="fixed" *ngIf="articleId">
+<ion-fab vertical="bottom" horizontal="center" slot="fixed" *ngIf="postId">
   <ion-fab-button (click)="confirmDelete()" color="danger">
     <ion-icon name="trash"></ion-icon>
   </ion-fab-button>

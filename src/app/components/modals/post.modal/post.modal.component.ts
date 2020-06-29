@@ -1,26 +1,26 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ModalController, ToastController, AlertController } from '@ionic/angular';
 
-import { ArticleFormComponent } from '@forms/article.form/article.form.component';
-import { ArticleDataService } from '@data/article.data.service';
+import { PostFormComponent } from '@forms/post.form/post.form.component';
+import { PostDataService } from '@data/post.data.service';
 
 @Component({
-  selector: 'app-article.modal',
-  templateUrl: './article.modal.component.html',
-  styleUrls: ['./article.modal.component.scss'],
+  selector: 'app-post-modal',
+  templateUrl: './post.modal.component.html',
+  styleUrls: ['./post.modal.component.scss'],
 })
-export class ArticleModalComponent implements OnInit {  
+export class PostModalComponent implements OnInit {  
   isValid!: boolean;
 
-  @Input() articleId!: number;
+  @Input() postId!: number;
   @Input() defaultCategoryId!: number;
-  @ViewChild(ArticleFormComponent) articleForm!: ArticleFormComponent;
+  @ViewChild(PostFormComponent) postForm!: PostFormComponent;
 
   constructor(
     private modalController: ModalController,
     private toastController: ToastController,
     public alertController: AlertController,
-    private articleDataService: ArticleDataService
+    private postDataService: PostDataService
   ) { }
 
   ngOnInit() { }
@@ -31,15 +31,15 @@ export class ArticleModalComponent implements OnInit {
     });
   }
 
-  saveArticle(){
-    this.showToast((this.articleForm.formData.id) ? 'Article saved' : 'Article added');
-    this.articleDataService.saveArticle(this.articleForm.formData);
+  savePost(){
+    this.showToast((this.postForm.formData.id) ? 'Post saved' : 'Post added');
+    this.postDataService.savePost(this.postForm.formData);
     this.close(true);
   }
 
-  deleteArticle(){
-    this.showToast('Article deleted');
-    this.articleDataService.deleteArticle(this.articleId);
+  deletePost(){
+    this.showToast('Post deleted');
+    this.postDataService.deletePost(this.postId);
     this.close(true);
   }
 
@@ -48,7 +48,7 @@ export class ArticleModalComponent implements OnInit {
   }
 
   async confirmClose(){
-    if (this.articleForm.hasChanges) {
+    if (this.postForm.hasChanges) {
       const alert = await this.alertController.create({
         header: 'Discard changes',
         message: 'Are you sure?',
@@ -82,7 +82,7 @@ export class ArticleModalComponent implements OnInit {
         {
           text: 'Yes',
           handler: () => {
-            this.deleteArticle();
+            this.deletePost();
           }
         }
       ]

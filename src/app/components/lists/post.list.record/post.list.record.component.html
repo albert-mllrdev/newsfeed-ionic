@@ -1,0 +1,25 @@
+<ion-card class="ion-text-left">
+  <ion-card-header>
+    <ion-card-title color="dark">{{post.title}}</ion-card-title>
+    <ion-card-subtitle color="primary">{{post.source}} 
+      <ion-text color="dark">|</ion-text>
+      <ion-text color="medium"> {{post.publishedAt | timeAgo}}</ion-text>
+    </ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-text>{{ (post.content.length > 175) ? (post.content | slice:0:175) + '...' : (post.content) }}</ion-text>
+  </ion-card-content>
+<ion-card-content class="ion-text-center">
+  
+  <ion-button color="medium" (click)="toggleLike(); $event.stopPropagation();">
+    <ion-icon item-start name="thumbs-up" class="ion-margin-end" [ngClass]="{'is-liked' : post.isLiked}"></ion-icon>
+    Like
+  </ion-button>
+
+  <ion-button color="medium" (click)="!showComment(); $event.stopPropagation();">
+    <ion-icon item-start name="chatbox" class="ion-margin-end"></ion-icon>
+    Comment <ion-badge slot="end" color="dark" class="ion-margin-start">{{post.comments.length}}</ion-badge>
+  </ion-button>
+  <app-comments-list *ngIf="showComments" [comments]="post.comments"></app-comments-list>
+</ion-card-content>  
+</ion-card>

@@ -1,30 +1,30 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
-import { IArticle } from '@interfaces/article';
-import { ArticleModalComponent } from '@modals/article.modal/article.modal.component';
+import { IPost } from '@interfaces/post';
+import { PostModalComponent } from '@modals/post.modal/post.modal.component';
 
 @Component({
-  selector: 'app-articles-list',
-  templateUrl: './articles.list.component.html',
-  styleUrls: ['./articles.list.component.scss']
+  selector: 'app-post-list',
+  templateUrl: './post.list.component.html',
+  styleUrls: ['./post.list.component.scss']
 })
-export class ArticlesListComponent implements OnInit {
-  @Input() articles: IArticle[] = [];
+export class PostListComponent implements OnInit {
+  @Input() posts: IPost[] = [];
   @Output() needReloadEvent = new EventEmitter<string>();
   
-  articleFilter = { categoryId : '' };
-  articleTextFilter = { $or: [{ title: ''}, { source: '' }, { content: '' }] };
+  postFilter = { categoryId : '' };
+  postTextFilter = { $or: [{ title: ''}, { source: '' }, { content: '' }] };
 
   constructor(public modalController: ModalController) { }
 
   ngOnInit() { }
 
-  async showArticle(articleId: number){
+  async showPost(postId: number){
     const modal = await this.modalController.create({
-      component: ArticleModalComponent,
+      component: PostModalComponent,
       componentProps: {
-        articleId
+        postId
       }
     });
 
@@ -38,15 +38,15 @@ export class ArticlesListComponent implements OnInit {
   }
   
   getCategoryFilter(){
-    return this.articleFilter.categoryId;
+    return this.postFilter.categoryId;
   }
 
   setCategoryFilter(categoryId?: number){
-    this.articleFilter.categoryId = (categoryId) ? categoryId.toString() : '';
+    this.postFilter.categoryId = (categoryId) ? categoryId.toString() : '';
   }
 
   setFilterSearch(searchText: string){
-    this.articleTextFilter = { 
+    this.postTextFilter = { 
       $or: [{ title: searchText }, { source: searchText }, { content: searchText }] 
     };
   }

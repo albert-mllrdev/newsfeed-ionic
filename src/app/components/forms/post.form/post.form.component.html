@@ -1,5 +1,5 @@
 <ion-content padding>
-  <form [formGroup]="articleForm">
+  <form [formGroup]="postForm">
     <ion-list>
         <ion-item>
             <ion-label position="stacked">Title</ion-label>
@@ -17,7 +17,7 @@
     <ion-list>
       <ion-item>
           <ion-label position="stacked">Source</ion-label>
-          <ion-input formControlName="source" type="text"></ion-input>
+          <ion-input formControlName="source" type="text" maxlength="30"></ion-input>
       </ion-item>
     </ion-list>   
     <ion-list>

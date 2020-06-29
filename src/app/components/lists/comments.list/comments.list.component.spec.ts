@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ArticleModalComponent } from './article.modal.component';
+import { CommentsListComponent } from './comments.list.component';
 
-describe('ArticleModalComponent', () => {
-  let component: ArticleModalComponent;
-  let fixture: ComponentFixture<ArticleModalComponent>;
+describe('Comments.ListComponent', () => {
+  let component: CommentsListComponent;
+  let fixture: ComponentFixture<CommentsListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArticleModalComponent ],
+      declarations: [ CommentsListComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ArticleModalComponent);
+    fixture = TestBed.createComponent(CommentsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

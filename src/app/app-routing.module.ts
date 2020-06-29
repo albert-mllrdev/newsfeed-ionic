@@ -7,13 +7,13 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'article',
-    loadChildren: () => import('./pages/article/article.module').then( m => m.ArticlePageModule)
+    path: '',
+    redirectTo: 'feed',
+    pathMatch: 'full'
   },
   {
-    path: '',
-    redirectTo: 'article',
-    pathMatch: 'full'
+    path: 'feed',
+    loadChildren: () => import('./pages/feed/feed.module').then( m => m.FeedPageModule)
   }
 ];
 

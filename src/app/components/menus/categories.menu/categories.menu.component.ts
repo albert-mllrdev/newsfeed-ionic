@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 
-import { ArticleDataService } from '@data/article.data.service';
+import { PostDataService } from '@data/post.data.service';
 import { ICategory } from '@interfaces/category';
-import { IArticle } from '@interfaces/article';
+import { IPost } from '@interfaces/post';
 
 @Component({
   selector: 'app-categories-menu',
@@ -11,14 +11,14 @@ import { IArticle } from '@interfaces/article';
   styleUrls: ['./categories.menu.component.scss'],
 })
 export class CategoriesMenuComponent implements OnInit {
-  @Input() articles: IArticle[] = [];
+  @Input() posts: IPost[] = [];
   @Output() setCategoryEvent = new EventEmitter();
   
   categories: ICategory[] = [];
   currentCategoryId?: number | null;
 
   constructor(  
-    private articleDataService: ArticleDataService,
+    private postDataService: PostDataService,
     private menuController: MenuController
   ) { }
 
@@ -27,7 +27,7 @@ export class CategoriesMenuComponent implements OnInit {
   }
 
   loadCategories(){
-    this.articleDataService.getCategories().subscribe((categories: ICategory[]) => {
+    this.postDataService.getCategories().subscribe((categories: ICategory[]) => {
       this.categories = categories;
     });
   }
@@ -38,9 +38,9 @@ export class CategoriesMenuComponent implements OnInit {
     this.setCategoryEvent.emit(categoryId);
   }
 
-  getTotalArticlesInCategory(categoryId: number){
-    if (this.articles){
-      return this.articles.filter((article: IArticle)  => +article.categoryId === categoryId).length;
+  getTotalPostsInCategory(categoryId: number){
+    if (this.posts){
+      return this.posts.filter((post: IPost)  => +post.categoryId === categoryId).length;
     }
     return 0;
   }
