@@ -22,11 +22,13 @@ export class CommentsListComponent implements OnInit {
   }
 
   saveComment(){
-    const newComment: IComment =  {
-      text: this.commentForm.value.comment,
-      publishedAt: new Date()
-    };
-    this.comments.push(newComment);
-    this.commentForm.setValue({comment: ''});
+    if (this.commentForm.value.comment){
+      const newComment: IComment =  {
+        text: this.commentForm.value.comment,
+        publishedAt: new Date()
+      };
+      this.comments.push(newComment);
+      this.commentForm.setValue({comment: ''});
+    }
   }
 }
