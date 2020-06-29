@@ -59,7 +59,7 @@ export class PostFormComponent implements OnInit {
       });
     }
     else {
-      this.postForm.patchValue({ categoryId: (this.defaultCategoryId) ? this.defaultCategoryId : "1" });
+      this.postForm.patchValue({ categoryId: (this.defaultCategoryId) ? this.defaultCategoryId : '1' });
     }
   }
 

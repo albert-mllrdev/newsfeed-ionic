@@ -3,9 +3,14 @@
     <ion-text>{{comment.text}}</ion-text>
     <ion-note slot="end">{{comment.publishedAt | timeAgo}}</ion-note>
   </ion-item>
-  <ion-item>
-    <form [formGroup]="commentForm" (submit)="saveComment()">
-      <ion-input placeholder="Write a Comment" formControlName="comment"></ion-input>
+  <ion-item lines="none">
+    <form [formGroup]="commentForm" (submit)="saveComment()" >
+      <ion-item  class="ion-no-padding">
+        <ion-textarea placeholder="Write a Comment" formControlName="comment" autoGrow="true"></ion-textarea>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-button (click)="saveComment()" slot="end" color="medium"><ion-icon name="send"></ion-icon></ion-button>
+      </ion-item>      
     </form>
   </ion-item>
 </ion-list>

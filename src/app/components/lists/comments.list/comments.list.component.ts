@@ -11,9 +11,8 @@ export class CommentsListComponent implements OnInit {
   @Input() comments: IComment[] = [];
 
   commentForm = new FormGroup({
-    comment: new FormControl('')
+    comment: new FormControl('', Validators.required)
   });
-
 
   constructor() { }
 
@@ -22,7 +21,7 @@ export class CommentsListComponent implements OnInit {
   }
 
   saveComment(){
-    if (this.commentForm.value.comment){
+    if (this.commentForm.valid){
       const newComment: IComment =  {
         text: this.commentForm.value.comment,
         publishedAt: new Date()
