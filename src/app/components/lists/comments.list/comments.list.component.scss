@@ -1,12 +1,12 @@
 form{
     width: 100%;
 
-    ion-text{
-
-        word-break: break-all;
-    }
-
     ion-item {
         --highlight-background: unset;
+
+        ion-text{
+
+            word-break: break-all;
+        }
     }
 }
