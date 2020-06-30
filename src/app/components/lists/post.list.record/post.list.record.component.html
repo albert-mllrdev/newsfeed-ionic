@@ -12,7 +12,7 @@
 <ion-card-content class="ion-text-center">
   
   <ion-button color="medium" (click)="toggleLike(); $event.stopPropagation();">
-    <ion-icon item-start name="thumbs-up" class="ion-margin-end" [ngClass]="{'is-liked' : post.isLiked}"></ion-icon>
+    <ion-icon item-start name="thumbs-up" class="ion-margin-end" [class.is-liked]="post.isLiked"></ion-icon>
     Like
   </ion-button>
 
