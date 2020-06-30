@@ -1,4 +1,4 @@
-<div *ngFor="let post of posts | orderBy: publishedAt | filterBy: postFilter | filterBy: postTextFilter">
+<div *ngFor="let post of posts | orderBy: 'publishedAt' : true | filterBy: postFilter | filterBy: postTextFilter">
   <app-post-list-record [post]="post" (click)="showPost(post.id)"></app-post-list-record>
 </div>
 
