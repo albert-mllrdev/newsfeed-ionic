@@ -15,7 +15,7 @@ import { IPostFilter } from '@interfaces/IPostFilter';
   templateUrl: './categories.menu.component.html',
   styleUrls: ['./categories.menu.component.scss'],
 })
-export class CategoriesMenuComponent implements OnInit {
+export class CategoryMenuComponent implements OnInit {
   posts: IPost[] = [];
   categories: ICategory[] = [];
   currentCategoryId!: number;
