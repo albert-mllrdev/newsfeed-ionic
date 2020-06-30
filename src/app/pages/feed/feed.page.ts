@@ -36,16 +36,18 @@ export class FeedPage implements OnInit {
   async newPost() {    
     const modal = await this.modalController.create({
       component: PostModalComponent,
-      componentProps: {
-        defaultCategoryId: 0 // this.postList.getCategoryFilter()
-      }
+      componentProps: { }
+    });
+
+    modal.onDidDismiss().then((returnData) => {
+      this.loadPosts();
     });
 
     return await modal.present();
   }
 
   setFilterSearch(event: CustomEvent){
-   this.store.dispatch(setFilterText({ searchText : event.detail.value }));
+    this.store.dispatch(setFilterText({ searchText : event.detail.value }));
   }
 }
 

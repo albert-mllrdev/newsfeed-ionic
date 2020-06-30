@@ -5,6 +5,7 @@ import { IPost } from '@interfaces/IPost';
 import { PostModalComponent } from '@modals/post.modal/post.modal.component';
 import { Store, select } from '@ngrx/store';
 import { IPostFilter } from '@interfaces/IPostFilter';
+import { PostDataService } from '@data/post.data.service';
 
 @Component({
   selector: 'app-post-list',
@@ -13,14 +14,15 @@ import { IPostFilter } from '@interfaces/IPostFilter';
 })
 export class PostListComponent implements OnInit {
   @Input() posts: IPost[] = [];
-  @Output() reload = new EventEmitter<string>();
   
   postFilter = { categoryId: '' };
   postTextFilter = { $or: [{ title: ''}, { source: '' }, { content: '' }] };
 
   constructor(
     public modalController: ModalController,
-    private store: Store<{ filter: IPostFilter }>) { }
+    private store: Store<{ filter: IPostFilter }>,
+    private postDataService: PostDataService
+  ) { }
 
   ngOnInit() {
     this.watchFilterProperty();
@@ -46,7 +48,9 @@ export class PostListComponent implements OnInit {
 
     modal.onDidDismiss().then((returnData) => {
       if (returnData !== null && returnData.data.needReload) {
-        this.reload.emit();
+        this.postDataService.getPosts().subscribe((posts: IPost[]) => {
+          this.posts = posts;
+        });
       }
     });
 
