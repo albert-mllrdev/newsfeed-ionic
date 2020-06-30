@@ -50,7 +50,7 @@ export class PostFormComponent implements OnInit {
     }    
     else {      
       this.store.pipe(select('filter')).subscribe(filter => {        
-        this.postForm.patchValue({ categoryId: (filter.categoryId && filter.categoryId !== 0) ? filter.categoryId.toString() : '1' });
+        this.postForm.patchValue({ categoryId: (filter.categoryId && filter.categoryId !== 0) ? filter.categoryId : 1 });
       });
     }
   }

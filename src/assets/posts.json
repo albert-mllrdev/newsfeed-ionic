@@ -1,7 +1,7 @@
 [
     {
         "id":1,
-        "categoryId":"2",
+        "categoryId":2,
         "title":"Coronavirus: Qantas to axe 6,000 jobs due to pandemic",
         "author":"BBC News",
         "content":"Qantas will axe 6,000 jobs as part of its plans to survive the coronavirus pandemic, the airline says.\n\nThe cuts equate to about a fifth of the airline's workforce prior to the Covid-19 crisis. In March, it furloughed more than 80% of its staff.\n\nAustralia's national carrier said the collapse in global air travel had devastated revenues.\n\nLast week, the Australian government said its border would most likely remain closed into next year.\n\nIt prompted Qantas to cancel all international flights until late October, except for those to New Zealand.\n\nOn Thursday, chief executive Alan Joyce said the airline expected smaller revenues in the next three years, forcing it to become a smaller operation to survive.\n\n\"The actions we must take will have a huge impact on thousands of our people,\" he said in a statement.\n\n\"But the collapse in billions of dollars in revenue leaves us little choice if we are to save as many jobs as possible, long term.\"",
@@ -11,7 +11,7 @@
     },
     { 
         "id":3,
-        "categoryId":"2",
+        "categoryId":2,
         "title":"Uber under pressure from drivers and prosecutors in California",
         "author":"Financial Times",
         "content":"California’s top prosecutor has taken his most aggressive step yet in his attempt to force Uber and other gig economy companies to treat their workers as employees.\n\nState Atty. Gen. Xavier Becerra, backed by city attorneys in San Francisco, Los Angeles and San Diego, on Wednesday filed a request for a preliminary injunction in their lawsuit against the gig companies.\n\nIf granted, it would mean the companies must reclassify their workers in a matter of weeks.\n\nThe motion will be discussed at a hearing set for Aug. 6.\n\nThe request came as about 50 Uber drivers in San Francisco blocked the street outside the home of the company’s chief executive, Dara Khosrowshahi, demanding employee benefits and better provisions for protective equipment during the COVID-19 pandemic.",
@@ -21,7 +21,7 @@
     },
     {
         "id":5,
-        "categoryId":"6",
+        "categoryId":6,
         "title":"Eiza González Says She's \"Ashamed\" for Wearing Blackface on Telenovela",
         "author":"E! Online",
         "content":"Eiza Gonzalez is expressing remorse after photos of the actress in blackface resurfaced on social media this week.\n\nThe pictures were taken in 2007, when the From Dusk Till Dawn star starred on the telenovela Lola, Érase Una Vez, which translates to Lola, Once Upon a Time. However, the actress' old photos reappeared on Tuesday, when she and rumored boyfriend Timothée Chalamet were pictured vacationing in Mexico amid the coronavirus pandemic. \n\nThe 30-year-old has previously apologized for the offensive images, but in a statement to E! News shared Wednesday she reiterated, \"I am deeply sorry and ashamed about having worn blackface makeup shown in the images circulating. As a 15-year-old child actor on my first job in a Mexican telenovela, I was pressured against my will, and with no negotiating power, I could not advocate for myself in the situation. I wish I had the voice and knowledge then that I have now.\"\n\nEiza is just one of the handful of public figures who are apologizing for photos of themselves dressed in blackface.",
@@ -31,7 +31,7 @@
     },
     {
         "id":6,
-        "categoryId":"6",
+        "categoryId":6,
         "title":"Russell Crowe's 'Unhinged' sets for worldwide release as theatres reopen",
         "author":"WION",
         "content":"Thriller movie 'Unhinged', starring Russell Crowe, will premiere in international theatres as they gear up to resume activity in July since the coronavirus-induced shutdown.\n\nThe road rage film, which was earlier scheduled for a September release, will now hit the screens on July 10, becoming the first feature to be released after halls reopen.\n\nAccording to The Hollywood Reporter, Solstice Studios has closed deals to quickly release the movie, which is the indie studio's first project, in theatres around the world.\n\nThe US debut of 'Unhinged' will now virtually coincide with play in cinemas around the world as they reopen, including in the UK, the rest of Europe, Australia and Asia.\n\nOn Tuesday, Solstice confirmed key territory deals with Leonine for Germany and Austria, France's SND, The Searchers for the Benelux and StudioCanal for Australia and New Zealand.\n\n\"It is a privilege to be working with the top independent distribution companies around the world on our first feature,\" said Solstice's acquisitions and international head Crystal Bourbeau in a statement timed for the Cannes virtual market.\n\nOther international distributors in line for an early theatrical release of \"Unhinged\" include Altitude Films for the UK, Nordisk Film for Scandinavia, Italy's Leone Films and VVS for Canada.\n\nDirected by Derrick Borte, \"Unhinged\" is a story about a single mother (Caren Pistorius) who is stalked and tormented by a stranger (Crowe) following a road rage confrontation at a red light.\n\nThe movie also features Jimmi Simpson and Gabriel Bateman.\n\nOther titles expected to be released in theatres next month include Christopher Nolan's much-awaited \"Tenet\" and Disney's \"Mulan\" live-action remake.",
@@ -41,7 +41,7 @@
     },
     {
         "id":7,
-        "categoryId":"3",
+        "categoryId":3,
         "title":"Wala nang patalbugan! Palace: No more fashion show in this year’s SONA",
         "author":"POLITIKO",
         "content":"There will no longer be a “fashion show” in this year’s State of the Nation Address (SONA), Malacañang said Tuesday.\n\nThe annual address by the President is famous for its red carpet parade where lawmakers and their significant others sashay in their best fashion ensemble.\n\n“I can confirm it will not be the same SONA that we are used to. Siyempre po wala na iyong mga madamihang mga opisyales na nag-a-attend, wala na iyong fashion show na pagandahan ng suot at tingin ko po kakaunti lang ang mag-a-assemble sa Kongreso,” Presidential Spokesperson Harry Roque said in a televised briefing.\n\nRoque said he was not sure if President Rodrigo Duterte would deliver his speech at the Batasang Pambansa in Quezon City or via teleconferencing.\n\n“Hindi ko pa po sigurado if the President will physical go or will address it online, pero mayroon pa po kaming mga plano na hinahanda. Baka naman sorpresahin namin kayo,” the official also said.",
@@ -51,7 +51,7 @@
     },    
     {
         "id":8,
-        "categoryId":"1",
+        "categoryId":1,
         "title":"",
         "author":"Karen",
         "content":"Where is the manager!?",
@@ -61,7 +61,7 @@
     },
     {
         "id":9,
-        "categoryId":"5",
+        "categoryId":5,
         "title":"The iconic self-balancing Segway is ending production in July",
         "author":"KnowTechie",
         "content":"Growing up, the two-wheeled, self-balancing Segway was iconic. It really did feel like the future. Now, 19 years after its initial release, Segway is ending production of the motorized vehicle, according to a new report from Fast Company.\n\nFirst released in 2001, the Segway made waves as the future of transportation, with Steve Jobs even saying that it could be as big as the PC. That said, it never made the splash it was expected to. Instead, it was relegated to the ranks of Segway city tours, with adoption numbers never reaching critical mass. To date, the company has sold approximately 140,000 units. Fast Company notes that initially, Segway hoped to sell 100,000 units in the first 13 months.\n\nHindsight is 20/20, of course, but Segway’s shape definitely played a role in low adoption numbers. Unlike today’s electric scooters, which can easily be stored, Segway’s were bulky, making them more of a novelty than a true means of transportation for crowded cities. That said, the two-wheeled machines definitely helped bring other self-balancing and electric transportation methods into the limelight.\n\nAccording to Fast Company, the manufacturing facility in Bedford, Newe Hampshire will stop production on July 15. 21 employees will be laid off, with another 12 people staying on temporarily to handle warranties, repairs, and more. The five employees currently working on the company’s Discovery scooters will continue to work.",
@@ -71,7 +71,7 @@
     },
     {
         "id":10,
-        "categoryId":"1",
+        "categoryId":1,
         "title":"TGIF",
         "author":"Bob",
         "content":"🍸",
