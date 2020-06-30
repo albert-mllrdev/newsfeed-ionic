@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 
 import { PostDataService } from '@data/post.data.service';
 import { ICategory } from '@interfaces/ICategory';
@@ -16,23 +16,24 @@ export class PostFormComponent implements OnInit {
   @Input() postId!: number;
   @Output() closeForm = new EventEmitter();
 
-  postForm = new FormGroup({
-    id: new FormControl(''),
-    categoryId: new FormControl('', Validators.required),
-    title: new FormControl(''),
-    source: new FormControl('', Validators.required),
-    content: new FormControl('', Validators.required),
-    publishedAt: new FormControl(''),
-    isLiked: new FormControl(''),    
-    comments: new FormControl('')
-  });
-  
   categories: ICategory[] = [];
 
-  constructor(
-    private postDataService: PostDataService,    
-    private toastController: ToastController,
-    public alertController: AlertController,
+  postForm: FormGroup = this.formBuilder.group({
+    id: [''],
+    categoryId: ['', Validators.required],
+    title: [''],
+    source:  ['', Validators.required],
+    content:  ['', Validators.required],
+    publishedAt:  [''],
+    isLiked: [''], 
+    comments:  ['']
+  });
+  
+  constructor( 
+    public alertController: AlertController, 
+    private toastController: ToastController,   
+    private formBuilder: FormBuilder,
+    private postDataService: PostDataService,   
     private store: Store<{ filter: IPostFilter }>) { }
 
   ngOnInit() {

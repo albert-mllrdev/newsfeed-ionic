@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { IComment } from '@interfaces/IComment';
 
 @Component({
@@ -10,11 +10,11 @@ import { IComment } from '@interfaces/IComment';
 export class CommentsListComponent implements OnInit {
   @Input() comments: IComment[] = [];
 
-  commentForm = new FormGroup({
-    comment: new FormControl('', Validators.required)
+  commentForm: FormGroup = this.formBuilder.group({
+    comment: ['', Validators.required]
   });
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() { }
 
