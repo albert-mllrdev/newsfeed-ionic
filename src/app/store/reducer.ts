@@ -1,6 +1,7 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { setFilter, setFilterCategory, setFilterText } from './actions';
-import { IPostFilter } from '@interfaces/IPostFilter';
+
+import { IPostFilter } from '@albert/interfaces/IPostFilter';
+import { setFilter, setFilterCategory, setFilterText } from '@albert/store/actions';
 
 const initialState: IPostFilter = {
   categoryId: 0,
@@ -16,7 +17,7 @@ const _counterReducer = createReducer(initialState,
   }),
   on(setFilterText, (state, props) => {
     return {categoryId : state.categoryId, searchText: props.searchText };
-  })  
+  })
 );
 
 export function counterReducer(state: IPostFilter | undefined, action: Action) {

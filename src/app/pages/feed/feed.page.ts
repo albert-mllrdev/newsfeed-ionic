@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IPost } from '@interfaces/IPost';
-import { PostDataService } from '@data/post.data.service';
 import { ModalController } from '@ionic/angular';
-import { PostModalComponent } from '@modals/post.modal/post.modal.component';
+
+import { IPost } from '@albert/interfaces/IPost';
+import { PostDataService } from '@albert/data/post.data.service';
+import { PostModalComponent } from '@albert/modals/post.modal/post.modal.component';
 
 @Component({
   selector: 'app-feed',

@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { IPostFilter } from '@interfaces/IPostFilter';
-import { PostDataService } from '@data/post.data.service';
-import { IPost } from '@interfaces/IPost';
-import { setFilterText } from 'src/app/store/actions';
+
+import { IPost } from '@albert/interfaces/IPost';
+import { IPostFilter } from '@albert/interfaces/IPostFilter';
+import { PostDataService } from '@albert/data/post.data.service';
+import { setFilterText } from '@albert/store/actions';
 @Component({
   selector: 'app-post-list-wrapper',
   templateUrl: './post-list-wrapper.component.html',

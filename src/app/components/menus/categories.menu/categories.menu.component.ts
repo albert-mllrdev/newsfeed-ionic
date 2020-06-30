@@ -1,14 +1,12 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
 
-import { PostDataService } from '@data/post.data.service';
-import { ICategory } from '@interfaces/ICategory';
-import { IPost } from '@interfaces/IPost';
-import { setFilterCategory } from 'src/app/store/actions';
-import { IPostFilter } from '@interfaces/IPostFilter';
+import { ICategory } from '@albert/interfaces/ICategory';
+import { IPost } from '@albert/interfaces/IPost';
+import { IPostFilter } from '@albert/interfaces/IPostFilter';
+import { PostDataService } from '@albert/data/post.data.service';
+import { setFilterCategory } from '@albert/store/actions';
 
 @Component({
   selector: 'app-categories-menu',

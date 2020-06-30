@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
-
-import { PostDataService } from '@data/post.data.service';
-import { ICategory } from '@interfaces/ICategory';
-import { Store, select } from '@ngrx/store';
-import { IPostFilter } from '@interfaces/IPostFilter';
+import { FormGroup,  Validators, FormBuilder } from '@angular/forms';
 import { ToastController, AlertController } from '@ionic/angular';
+import { Store, select } from '@ngrx/store';
+
+import { PostDataService } from '@albert/data/post.data.service';
+import { ICategory } from '@albert/interfaces/ICategory';
+import { IPostFilter } from '@albert/interfaces/IPostFilter';
 
 @Component({
   selector: 'app-post-form',

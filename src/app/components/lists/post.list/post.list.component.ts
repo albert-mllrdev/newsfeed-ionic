@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
-import { IPost } from '@interfaces/IPost';
-import { PostModalComponent } from '@modals/post.modal/post.modal.component';
+import { IPost } from '@albert/interfaces/IPost';
+import { PostModalComponent } from '@albert/modals/post.modal/post.modal.component';
 
 @Component({
   selector: 'app-post-list',

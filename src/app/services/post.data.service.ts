@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IPost } from '@interfaces/IPost';
-import { ICategory } from '@interfaces/ICategory';
+import { IPost } from '@albert/interfaces/IPost';
+import { ICategory } from '@albert/interfaces/ICategory';
 
 @Injectable({
   providedIn: 'root'

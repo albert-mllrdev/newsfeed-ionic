@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IPost } from '@interfaces/IPost';
+
+import { IPost } from '@albert/interfaces/IPost';
 
 @Component({
   selector: 'app-post-list-record',
