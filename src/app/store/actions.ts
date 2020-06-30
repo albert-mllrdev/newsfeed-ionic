@@ -1,5 +1,4 @@
 import { createAction, props } from '@ngrx/store';
-import { IFilter } from '@interfaces/IFilter';
 
 export const setFilter = createAction(
     '[Component] Set Filter',    

@@ -8,7 +8,7 @@ import { PostDataService } from '@data/post.data.service';
 import { ICategory } from '@interfaces/ICategory';
 import { IPost } from '@interfaces/IPost';
 import { setFilterCategory } from 'src/app/store/actions';
-import { IFilter } from '@interfaces/IFilter';
+import { IPostFilter } from '@interfaces/IPostFilter';
 
 @Component({
   selector: 'app-categories-menu',
@@ -23,7 +23,7 @@ export class CategoriesMenuComponent implements OnInit {
   constructor(  
     private postDataService: PostDataService,
     private menuController: MenuController,
-    private store: Store<{ filter: IFilter }> 
+    private store: Store<{ filter: IPostFilter }> 
   ) { }
 
   ngOnInit() {

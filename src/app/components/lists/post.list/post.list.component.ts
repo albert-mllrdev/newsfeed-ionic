@@ -4,7 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { IPost } from '@interfaces/IPost';
 import { PostModalComponent } from '@modals/post.modal/post.modal.component';
 import { Store, select } from '@ngrx/store';
-import { IFilter } from '@interfaces/IFilter';
+import { IPostFilter } from '@interfaces/IPostFilter';
 
 @Component({
   selector: 'app-post-list',
@@ -20,7 +20,7 @@ export class PostListComponent implements OnInit {
 
   constructor(
     public modalController: ModalController,
-    private store: Store<{ filter: IFilter }>) { }
+    private store: Store<{ filter: IPostFilter }>) { }
 
   ngOnInit() {
     this.watchFilterProperty();

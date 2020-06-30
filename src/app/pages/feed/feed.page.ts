@@ -6,7 +6,7 @@ import { ModalController, IonContent } from '@ionic/angular';
 import { PostListComponent } from '@lists/post.list/post.list.component';
 import { PostModalComponent } from '@modals/post.modal/post.modal.component';
 import { Store } from '@ngrx/store';
-import { IFilter } from '@interfaces/IFilter';
+import { IPostFilter } from '@interfaces/IPostFilter';
 import { setFilterText } from 'src/app/store/actions';
 
 @Component({
@@ -20,7 +20,7 @@ export class FeedPage implements OnInit {
   constructor(
     private postDataService: PostDataService,
     public modalController: ModalController,
-    private store: Store<{ filter: IFilter }>
+    private store: Store<{ filter: IPostFilter }>
   ) {}
 
   ngOnInit() {
