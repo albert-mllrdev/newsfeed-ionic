@@ -13,7 +13,7 @@ export class PostListWrapperComponent implements OnInit {
   @Input() posts: IPost[] = [];
 
   postFilter = { categoryId: '' };
-  postTextFilter = { $or: [{ title: ''}, { source: '' }, { content: '' }] };
+  postTextFilter = { $or: [{ title: ''}, { author: '' }, { content: '' }] };
 
   constructor(
     private store: Store<{ filter: IPostFilter }>,
@@ -32,7 +32,7 @@ export class PostListWrapperComponent implements OnInit {
       this.postFilter.categoryId = (filter.categoryId) ? filter.categoryId.toString() : '';
 
       this.postTextFilter = { 
-        $or: [{ title: filter.searchText }, { source: filter.searchText }, { content: filter.searchText }] 
+        $or: [{ title: filter.searchText }, { author: filter.searchText }, { content: filter.searchText }] 
       };
     });
   }

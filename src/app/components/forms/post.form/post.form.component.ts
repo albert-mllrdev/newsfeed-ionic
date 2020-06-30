@@ -22,7 +22,7 @@ export class PostFormComponent implements OnInit {
     id: [''],
     categoryId: ['', Validators.required],
     title: [''],
-    source:  ['', Validators.required],
+    author:  ['', Validators.required],
     content:  ['', Validators.required],
     publishedAt:  [''],
     isLiked: [''], 
