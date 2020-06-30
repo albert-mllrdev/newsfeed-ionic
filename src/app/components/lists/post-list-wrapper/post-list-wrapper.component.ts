@@ -4,9 +4,6 @@ import { IPostFilter } from '@interfaces/IPostFilter';
 import { PostDataService } from '@data/post.data.service';
 import { IPost } from '@interfaces/IPost';
 import { setFilterText } from 'src/app/store/actions';
-import { ModalController } from '@ionic/angular';
-import { PostModalComponent } from '@modals/post.modal/post.modal.component';
-
 @Component({
   selector: 'app-post-list-wrapper',
   templateUrl: './post-list-wrapper.component.html',
@@ -20,8 +17,7 @@ export class PostListWrapperComponent implements OnInit {
 
   constructor(
     private store: Store<{ filter: IPostFilter }>,
-    private postDataService: PostDataService,    
-    public modalController: ModalController) { }
+    private postDataService: PostDataService) { }
 
   ngOnInit() {
     this.watchFilterProperty();
@@ -39,21 +35,6 @@ export class PostListWrapperComponent implements OnInit {
         $or: [{ title: filter.searchText }, { source: filter.searchText }, { content: filter.searchText }] 
       };
     });
-  }  
-
-  async newPost() {    
-    const modal = await this.modalController.create({
-      component: PostModalComponent,
-      componentProps: { }
-    });
-
-    modal.onDidDismiss().then((returnData) => {
-      if (returnData !== null && returnData.data.needReload) {
-        this.reload();
-      }
-    });
-
-    return await modal.present();
   }
 
   reload(){    
