@@ -16,9 +16,7 @@ export class CommentsListComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   saveComment(){
     if (this.commentForm.valid){
