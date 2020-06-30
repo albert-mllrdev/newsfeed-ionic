@@ -55,12 +55,11 @@ export class PostFormComponent implements OnInit {
 
   loadPost(){
     if (this.postId){
-      this.postDataService.getPost(this.postId).subscribe((post: IPost) => {
-        if (post){
-          this.postForm.setValue(post);
-        }
-      });
-    }
+      const post = this.postDataService.getPost(this.postId);
+      if (post) {
+        this.postForm.setValue(post);
+      }
+    }    
     else {      
       this.store.pipe(select('filter')).subscribe(filter => {        
         this.postForm.patchValue({ categoryId: (filter.categoryId && filter.categoryId !== 0) ? filter.categoryId.toString() : '1' });

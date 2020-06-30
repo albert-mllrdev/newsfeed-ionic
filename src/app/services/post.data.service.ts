@@ -31,17 +31,12 @@ export class PostDataService {
       );
   }
 
-  getPost(postId: number): Observable<IPost> {
-    return this.getPosts().pipe(
-      map((posts: IPost[]) => {
-        const [postResult] = posts.filter((post: IPost)  => post.id === postId);
-        return postResult;
-      })
-    );
-  }  
+  getPost(postId: number): IPost | undefined {
+    return this.posts.find((post: IPost)  => post.id === postId);
+  }
 
   savePost(formData: IPost) {
-    const [postResult] = this.posts.filter((post: IPost)  => post.id === formData.id);
+    const postResult = this.posts.find((post: IPost)  => post.id === formData.id);
     if (postResult){
       this.posts[this.posts.indexOf(postResult)] = {... formData};
     } else {
