@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content>
-  <app-post-form [postId]="postId" [defaultCategoryId]="defaultCategoryId" (validationStatusChange)='validationStatusChange($event)'></app-post-form>
+  <app-post-form [postId]="postId" (validationStatusChange)='validationStatusChange($event)'></app-post-form>
 </ion-content>
 
 <ion-fab vertical="bottom" horizontal="center" slot="fixed" *ngIf="postId">

@@ -13,7 +13,6 @@ export class PostModalComponent implements OnInit {
   isValid!: boolean;
 
   @Input() postId!: number;
-  @Input() defaultCategoryId!: number;
   @ViewChild(PostFormComponent) postForm!: PostFormComponent;
 
   constructor(

@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { PostDataService } from '@data/post.data.service';
 import { IPost } from '@interfaces/IPost';
 import { ICategory } from '@interfaces/ICategory';
+import { Store, select } from '@ngrx/store';
+import { IPostFilter } from '@interfaces/IPostFilter';
 
 @Component({
   selector: 'app-post-form',
@@ -12,7 +14,6 @@ import { ICategory } from '@interfaces/ICategory';
 })
 export class PostFormComponent implements OnInit {
   @Input() postId!: number;
-  @Input() defaultCategoryId!: number;
   @Output() validationStatusChange = new EventEmitter();
 
   postForm = new FormGroup({
@@ -36,7 +37,9 @@ export class PostFormComponent implements OnInit {
   
   categories: ICategory[] = [];
 
-  constructor(private postDataService: PostDataService) { }
+  constructor(
+    private postDataService: PostDataService,
+    private store: Store<{ filter: IPostFilter }>) { }
 
   ngOnInit() {
     this.loadPost();
@@ -58,8 +61,10 @@ export class PostFormComponent implements OnInit {
         }
       });
     }
-    else {
-      this.postForm.patchValue({ categoryId: (this.defaultCategoryId) ? this.defaultCategoryId : '1' });
+    else {      
+      this.store.pipe(select('filter')).subscribe(filter => {        
+        this.postForm.patchValue({ categoryId: (filter.categoryId && filter.categoryId !== 0) ? filter.categoryId.toString() : '1' });
+      });
     }
   }
 
