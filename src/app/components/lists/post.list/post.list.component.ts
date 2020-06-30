@@ -13,7 +13,7 @@ import { IPostFilter } from '@interfaces/IPostFilter';
 })
 export class PostListComponent implements OnInit {
   @Input() posts: IPost[] = [];
-  @Output() needReloadEvent = new EventEmitter<string>();
+  @Output() reload = new EventEmitter<string>();
   
   postFilter = { categoryId: '' };
   postTextFilter = { $or: [{ title: ''}, { source: '' }, { content: '' }] };
@@ -46,7 +46,7 @@ export class PostListComponent implements OnInit {
 
     modal.onDidDismiss().then((returnData) => {
       if (returnData !== null && returnData.data.needReload) {
-        this.needReloadEvent.emit();
+        this.reload.emit();
       }
     });
 
