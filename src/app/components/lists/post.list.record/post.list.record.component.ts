@@ -8,6 +8,8 @@ import { IPost } from '@interfaces/IPost';
 })
 export class PostListRecordComponent implements OnInit {
   @Input() post!: IPost;
+
+  allowedVisibleContentLength = 175;
   showComments = false;
 
   constructor() { }
@@ -20,5 +22,9 @@ export class PostListRecordComponent implements OnInit {
 
   toggleLike(){
     this.post.isLiked = !this.post.isLiked;
+  }
+
+  getViewableContent(content: string){
+    return (content.length <  this.allowedVisibleContentLength) ? content : `${content.slice(0, this.allowedVisibleContentLength)}...`;
   }
 }
