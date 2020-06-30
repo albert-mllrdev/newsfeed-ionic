@@ -13,9 +13,7 @@ export class PostListComponent implements OnInit {
   @Input() posts: IPost[] = [];
   @Output() reload = new EventEmitter();
 
-  constructor(
-    public modalController: ModalController
-  ) { }
+  constructor(public modalController: ModalController) { }
 
   ngOnInit() { }
 
