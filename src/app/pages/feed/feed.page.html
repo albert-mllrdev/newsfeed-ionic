@@ -11,13 +11,6 @@
 </ion-header>
 <ion-content [fullscreen]="true" color="medium">
   <div id="container">
-    <ion-searchbar showCancelButton="never" (ionChange)="setFilterSearch($event)" color="light"></ion-searchbar>
-    <app-post-list [posts]="posts"></app-post-list>
+    <app-post-list-wrapper [posts]="posts"></app-post-list-wrapper>
   </div>
-
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="newPost()" color="success">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 </ion-content>

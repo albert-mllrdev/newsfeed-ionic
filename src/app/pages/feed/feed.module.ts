@@ -16,6 +16,7 @@ import { PostFormComponent } from '@forms/post.form/post.form.component';
 import { CategoryMenuComponent } from '@menus/categories.menu/categories.menu.component';
 import { CommentsListComponent } from '@lists/comments.list/comments.list.component';
 import { PostListRecordComponent } from '@lists/post.list.record/post.list.record.component';
+import { PostListWrapperComponent } from '@lists/post-list-wrapper/post-list-wrapper.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { PostListRecordComponent } from '@lists/post.list.record/post.list.recor
     FeedPage,
     PostModalComponent, 
     PostFormComponent, 
+    PostListWrapperComponent,
     PostListComponent, 
     PostListRecordComponent,
     CategoryMenuComponent,
