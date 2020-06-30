@@ -3,6 +3,8 @@ import { ModalController } from '@ionic/angular';
 
 import { IPost } from '@interfaces/post';
 import { PostModalComponent } from '@modals/post.modal/post.modal.component';
+import { Store, select } from '@ngrx/store';
+import { IFilter } from '@interfaces/IFilter';
 
 @Component({
   selector: 'app-post-list',
@@ -13,12 +15,26 @@ export class PostListComponent implements OnInit {
   @Input() posts: IPost[] = [];
   @Output() needReloadEvent = new EventEmitter<string>();
   
-  postFilter = { categoryId : '' };
+  postFilter = { categoryId: '' };
   postTextFilter = { $or: [{ title: ''}, { source: '' }, { content: '' }] };
 
-  constructor(public modalController: ModalController) { }
+  constructor(
+    public modalController: ModalController,
+    private store: Store<{ filter: IFilter }>) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.watchFilterProperty();
+  }
+
+  watchFilterProperty(){
+    this.store.pipe(select('filter')).subscribe(filter => {
+      this.postFilter.categoryId = (filter.categoryId) ? filter.categoryId.toString() : '';
+
+      this.postTextFilter = { 
+        $or: [{ title: filter.searchText }, { source: filter.searchText }, { content: filter.searchText }] 
+      };
+    });
+  }
 
   async showPost(postId: number){
     const modal = await this.modalController.create({
@@ -35,19 +51,5 @@ export class PostListComponent implements OnInit {
     });
 
     return await modal.present();
-  }
-  
-  getCategoryFilter(){
-    return this.postFilter.categoryId;
-  }
-
-  setCategoryFilter(categoryId?: number){
-    this.postFilter.categoryId = (categoryId) ? categoryId.toString() : '';
-  }
-
-  setFilterSearch(searchText: string){
-    this.postTextFilter = { 
-      $or: [{ title: searchText }, { source: searchText }, { content: searchText }] 
-    };
   }
 }

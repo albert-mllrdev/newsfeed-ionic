@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { OrderModule } from 'ngx-order-pipe';
 import { FilterPipeModule} from 'ngx-filter-pipe';
 import { TimeAgoPipe } from '@pipes/time-ago.pipe';
+import { DateFnsModule } from 'ngx-date-fns';
 
 import { FeedPage } from './feed.page';
 import { FeedPageRoutingModule } from './feed-routing.module';
@@ -24,7 +25,8 @@ import { PostListRecordComponent } from '@lists/post.list.record/post.list.recor
     IonicModule,
     FeedPageRoutingModule,
     OrderModule,
-    FilterPipeModule    
+    FilterPipeModule,
+    DateFnsModule.forRoot()
   ],
   declarations: [
     FeedPage,

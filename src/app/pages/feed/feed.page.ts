@@ -5,6 +5,9 @@ import { ModalController, IonContent } from '@ionic/angular';
 
 import { PostListComponent } from '@lists/post.list/post.list.component';
 import { PostModalComponent } from '@modals/post.modal/post.modal.component';
+import { Store } from '@ngrx/store';
+import { IFilter } from '@interfaces/IFilter';
+import { setFilterText } from 'src/app/store/actions';
 
 @Component({
   selector: 'app-feed',
@@ -13,13 +16,11 @@ import { PostModalComponent } from '@modals/post.modal/post.modal.component';
 })
 export class FeedPage implements OnInit {
   posts: IPost[] = [];
-
-  @ViewChild(PostListComponent) postList!: PostListComponent;
-  @ViewChild(IonContent) ionContent!: IonContent;
   
   constructor(
     private postDataService: PostDataService,
-    public modalController: ModalController
+    public modalController: ModalController,
+    private store: Store<{ filter: IFilter }>
   ) {}
 
   ngOnInit() {
@@ -36,20 +37,15 @@ export class FeedPage implements OnInit {
     const modal = await this.modalController.create({
       component: PostModalComponent,
       componentProps: {
-        defaultCategoryId: this.postList.getCategoryFilter()
+        defaultCategoryId: 0 // this.postList.getCategoryFilter()
       }
     });
 
     return await modal.present();
   }
 
-  setFilterCategory(categoryId: number){
-    this.ionContent.scrollToTop();
-    this.postList.setCategoryFilter(categoryId);
-  }
-
   setFilterSearch(event: CustomEvent){
-    this.postList.setFilterSearch(event.detail.value);
+   this.store.dispatch(setFilterText({ searchText : event.detail.value }));
   }
 }
 

@@ -1,9 +1,14 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
 import { PostDataService } from '@data/post.data.service';
 import { ICategory } from '@interfaces/category';
 import { IPost } from '@interfaces/post';
+import { setFilterCategory } from 'src/app/store/actions';
+import { IFilter } from '@interfaces/IFilter';
 
 @Component({
   selector: 'app-categories-menu',
@@ -11,19 +16,34 @@ import { IPost } from '@interfaces/post';
   styleUrls: ['./categories.menu.component.scss'],
 })
 export class CategoriesMenuComponent implements OnInit {
-  @Input() posts: IPost[] = [];
-  @Output() setCategoryEvent = new EventEmitter();
-  
+  posts: IPost[] = [];
   categories: ICategory[] = [];
-  currentCategoryId?: number | null;
+  currentCategoryId!: number;
 
   constructor(  
     private postDataService: PostDataService,
-    private menuController: MenuController
+    private menuController: MenuController,
+    private store: Store<{ filter: IFilter }> 
   ) { }
 
   ngOnInit() {
-    this.loadCategories();
+    this.loadPosts();
+    this.watchCategoryID();
+  }
+
+  watchCategoryID(){
+    this.store.pipe(select('filter')).subscribe(filter =>{
+      if (filter.categoryId) {
+        this.currentCategoryId = filter.categoryId;
+      }
+    });
+  }
+  
+  loadPosts(){
+    this.postDataService.getPosts().subscribe((posts: IPost[]) => {
+      this.posts = posts;
+      this.loadCategories();
+    });
   }
 
   loadCategories(){
@@ -32,10 +52,9 @@ export class CategoriesMenuComponent implements OnInit {
     });
   }
 
-  setCategory(categoryId?: number | null){    
-    this.currentCategoryId = categoryId;
+  setCategory(newCategoryId: number){    
+    this.store.dispatch(setFilterCategory({ categoryId : newCategoryId }));
     this.close();
-    this.setCategoryEvent.emit(categoryId);
   }
 
   getTotalPostsInCategory(categoryId: number){

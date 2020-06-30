@@ -26,7 +26,8 @@
       "@modals/*": ["./src/app/components/modals/*"],
       "@menus/*": ["./src/app/components/menus/*"],
       "@data/*": ["./src/app/services/*"],
-      "@pipes/*": ["./src/app/pipes/*"]    
+      "@pipes/*": ["./src/app/pipes/*"],
+      "@albert/store/*": ["./src/app/store/*"],
     }
   },
   "angularCompilerOptions": {
