@@ -1,5 +1,16 @@
 <ion-content padding>
-  <form [formGroup]="postForm">
+  <form [formGroup]="postForm" (submit)="savePost()">
+    <ion-header>
+      <ion-toolbar color="dark">
+        <ion-title class="ion-text-center">{{ (postId) ? 'Edit' : 'New'}} Post</ion-title>
+        <ion-buttons slot="start">
+          <ion-button (click)="confirmClose()"><ion-icon name="backspace"></ion-icon></ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+          <ion-button type="submit" [disabled]="!postForm.valid">Save</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
     <ion-list>
         <ion-item>
             <ion-label position="stacked">Title</ion-label>
@@ -28,3 +39,9 @@
     </ion-list>
   </form>
 </ion-content>
+
+<ion-fab vertical="bottom" horizontal="center" slot="fixed" *ngIf="postId">
+  <ion-fab-button (click)="confirmDelete()" color="danger">
+    <ion-icon name="trash"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
