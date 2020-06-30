@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
-import { IPost } from '@interfaces/post';
+import { IPost } from '@interfaces/IPost';
 import { PostModalComponent } from '@modals/post.modal/post.modal.component';
 import { Store, select } from '@ngrx/store';
 import { IFilter } from '@interfaces/IFilter';

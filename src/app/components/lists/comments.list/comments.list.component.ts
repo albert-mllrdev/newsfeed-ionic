@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { IComment } from '@interfaces/comment';
+import { IComment } from '@interfaces/IComment';
 
 @Component({
   selector: 'app-comments-list',

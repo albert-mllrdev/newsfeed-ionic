@@ -1,4 +1,4 @@
-import { IComment } from './comment';
+import { IComment } from './IComment';
 
 export interface IPost {
     id: number;

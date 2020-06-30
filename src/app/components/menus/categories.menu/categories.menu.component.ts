@@ -5,8 +5,8 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { PostDataService } from '@data/post.data.service';
-import { ICategory } from '@interfaces/category';
-import { IPost } from '@interfaces/post';
+import { ICategory } from '@interfaces/ICategory';
+import { IPost } from '@interfaces/IPost';
 import { setFilterCategory } from 'src/app/store/actions';
 import { IFilter } from '@interfaces/IFilter';
 

@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 import { PostDataService } from '@data/post.data.service';
-import { IPost } from '@interfaces/post';
-import { ICategory } from '@interfaces/category';
+import { IPost } from '@interfaces/IPost';
+import { ICategory } from '@interfaces/ICategory';
 
 @Component({
   selector: 'app-post-form',

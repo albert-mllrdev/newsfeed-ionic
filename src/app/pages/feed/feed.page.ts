@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IPost } from '@interfaces/post';
+import { IPost } from '@interfaces/IPost';
 import { PostDataService } from '@data/post.data.service';
 import { ModalController, IonContent } from '@ionic/angular';
 
