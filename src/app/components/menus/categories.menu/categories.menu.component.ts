@@ -58,10 +58,7 @@ export class CategoryMenuComponent implements OnInit {
   }
 
   getTotalPostsInCategory(categoryId: number){
-    if (this.posts){
-      return this.posts.filter((post: IPost)  => +post.categoryId === categoryId).length;
-    }
-    return 0;
+    return this.posts.filter((post: IPost)  => +post.categoryId === categoryId).length;
   }
 
   close(){
