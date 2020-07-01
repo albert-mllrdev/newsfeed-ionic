@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, Platform, IonRouterOutlet } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
+const { App } = Plugins;
 
 import { IPost } from '@albert/interfaces/IPost';
 import { PostDataService } from '@albert/data/post.data.service';
@@ -14,12 +16,23 @@ export class FeedPage implements OnInit {
   posts: IPost[] = [];
   
   constructor(
-    private postDataService: PostDataService,    
-    public modalController: ModalController
-  ) {}
+    private postDataService: PostDataService,
+    public modalController: ModalController,
+    private platform: Platform,
+    private routerOutlet: IonRouterOutlet
+  ) { }
 
   ngOnInit() {
+    this.bindBackButton();
     this.loadPosts();
+  }
+
+  bindBackButton(){
+    this.platform.backButton.subscribeWithPriority(-1, () => {
+      if (!this.routerOutlet.canGoBack()) {
+        App.exitApp();
+      }
+    });
   }
 
   loadPosts(){
