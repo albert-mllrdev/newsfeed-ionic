@@ -16,7 +16,7 @@ import { setFilterCategory } from '@albert/store/actions';
 export class CategoryMenuComponent implements OnInit {
   posts: IPost[] = [];
   categories: ICategory[] = [];
-  currentCategoryId!: number;
+  currentCategoryId: number | undefined;
 
   constructor(  
     private postDataService: PostDataService,
