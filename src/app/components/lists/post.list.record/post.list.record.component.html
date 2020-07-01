@@ -7,7 +7,7 @@
     </ion-card-subtitle>
   </ion-card-header>
   <ion-card-content>
-    <ion-text>{{ getViewableContent(post.content) }}</ion-text>
+    <ion-text>{{ post.content | concatenateToEllipsis : allowedVisibleContentLength }}</ion-text>
   </ion-card-content>
 <ion-card-content class="ion-text-center">
   

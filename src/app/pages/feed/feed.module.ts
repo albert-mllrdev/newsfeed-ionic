@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { OrderModule } from 'ngx-order-pipe';
 import { FilterPipeModule} from 'ngx-filter-pipe';
 import { TimeAgoPipe } from '@albert/pipes/time-ago.pipe';
+import { ConcatenateToEllipsisPipe } from '@albert/pipes/concatenate-to-ellipsis.pipe';
 
 import { FeedPage } from './feed.page';
 import { FeedPageRoutingModule } from './feed-routing.module';
@@ -36,7 +37,8 @@ import { PostListWrapperComponent } from '@albert/lists/post-list-wrapper/post-l
     PostListRecordComponent,
     CategoryMenuComponent,
     CommentsListComponent,
-    TimeAgoPipe
+    TimeAgoPipe,
+    ConcatenateToEllipsisPipe
   ]
 })
 export class FeedPageModule {}
