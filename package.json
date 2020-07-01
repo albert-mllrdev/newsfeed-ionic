@@ -27,7 +27,6 @@
     "@ionic/angular": "^5.0.0",
     "@ngrx/store": "^9.2.0",
     "date-fns": "^2.14.0",
-    "ngx-date-fns": "^6.3.0",
     "ngx-filter-pipe": "^2.1.2",
     "ngx-order-pipe": "^2.0.4",
     "rxjs": "~6.5.1",
