@@ -30,7 +30,7 @@ export class TimeAgoPipe implements PipeTransform {
       return (hours === 1) ? 'an hour ago' :  `${hours} hours ago`;
     }
 
-    if (years < 1 && months < 1) {      
+    if (days < 30 || (years < 1 && months < 1)) {      
       return (days === 1) ? 'a day ago' : `${days} days ago`;
     }
 
