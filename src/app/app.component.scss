@@ -1,0 +1,14 @@
+::ng-deep .alert-wrapper{   
+
+    .alert-button{
+
+        color: var(--ion-color-dark);
+
+        &.danger-button{
+            
+            span{
+                color: var(--ion-color-danger);
+            }
+        }
+    }
+}

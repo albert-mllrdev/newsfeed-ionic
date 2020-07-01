@@ -83,7 +83,8 @@ export class PostFormComponent implements OnInit {
             text: 'No'
           },
           {
-            text: 'Yes',
+            text: 'Yes',            
+            cssClass: 'danger-button',
             handler: () => {              
               this.closeForm.emit();
             }
@@ -107,6 +108,7 @@ export class PostFormComponent implements OnInit {
         },
         {
           text: 'Yes',
+          cssClass: 'danger-button',
           handler: () => {
             this.deletePost();
           }
