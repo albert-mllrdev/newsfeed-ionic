@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { StoreModule } from '@ngrx/store';
-import { counterReducer } from './store/reducer';
+import { counterReducer } from '@albert/store/reducer';
 
 @NgModule({
   declarations: [AppComponent],
