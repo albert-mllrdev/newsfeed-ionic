@@ -11,11 +11,11 @@
   <ion-content>
     <ion-list>
       <ion-item (click)="setCategory()">
-        <ion-text [ngClass]="{'is-active' : !currentCategoryId}">All</ion-text>
+        <ion-text [class.is-active]="!currentCategoryId">All</ion-text>
         <ion-badge slot="end" color="dark">{{posts.length}}</ion-badge>
       </ion-item>
       <ion-item *ngFor="let category of categories | orderBy: 'name'" (click)="setCategory(category.id)">
-        <ion-text [ngClass]="{'is-active' : category.id === currentCategoryId}">{{category.name | titlecase}}</ion-text>
+        <ion-text [class.is-active]="category.id === currentCategoryId">{{category.name | titlecase}}</ion-text>
         <ion-badge slot="end" color="dark">{{getTotalPostsInCategory(category.id)}}</ion-badge>
       </ion-item>
     </ion-list>

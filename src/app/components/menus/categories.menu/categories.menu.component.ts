@@ -1,29 +1,47 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { Store, select } from '@ngrx/store';
 
-import { PostDataService } from '@data/post.data.service';
-import { ICategory } from '@interfaces/category';
-import { IPost } from '@interfaces/post';
+import { ICategory } from '@albert/interfaces/ICategory';
+import { IPost } from '@albert/interfaces/IPost';
+import { IPostFilter } from '@albert/interfaces/IPostFilter';
+import { PostDataService } from '@albert/data/post.data.service';
+import { setFilterCategory } from '@albert/store/actions';
 
 @Component({
   selector: 'app-categories-menu',
   templateUrl: './categories.menu.component.html',
   styleUrls: ['./categories.menu.component.scss'],
 })
-export class CategoriesMenuComponent implements OnInit {
-  @Input() posts: IPost[] = [];
-  @Output() setCategoryEvent = new EventEmitter();
-  
+export class CategoryMenuComponent implements OnInit {
+  posts: IPost[] = [];
   categories: ICategory[] = [];
-  currentCategoryId?: number | null;
+  currentCategoryId?: number;
 
   constructor(  
     private postDataService: PostDataService,
-    private menuController: MenuController
+    private menuController: MenuController,
+    private store: Store<{ filter: IPostFilter }> 
   ) { }
 
   ngOnInit() {
-    this.loadCategories();
+    this.loadPosts();
+    this.watchCategoryID();
+  }
+
+  watchCategoryID(){
+    this.store.pipe(select('filter')).subscribe(filter => {
+      if (filter.categoryId) {
+        this.currentCategoryId = filter.categoryId;
+      }
+    });
+  }
+  
+  loadPosts(){
+    this.postDataService.getPosts().subscribe((posts: IPost[]) => {
+      this.posts = posts;
+      this.loadCategories();
+    });
   }
 
   loadCategories(){
@@ -32,17 +50,13 @@ export class CategoriesMenuComponent implements OnInit {
     });
   }
 
-  setCategory(categoryId?: number | null){    
-    this.currentCategoryId = categoryId;
+  setCategory(newCategoryId: number){    
+    this.store.dispatch(setFilterCategory({ categoryId : newCategoryId }));
     this.close();
-    this.setCategoryEvent.emit(categoryId);
   }
 
   getTotalPostsInCategory(categoryId: number){
-    if (this.posts){
-      return this.posts.filter((post: IPost)  => +post.categoryId === categoryId).length;
-    }
-    return 0;
+    return this.posts.filter((post: IPost)  => +post.categoryId === categoryId).length;
   }
 
   close(){

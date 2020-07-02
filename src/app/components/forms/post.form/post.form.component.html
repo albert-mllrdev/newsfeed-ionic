@@ -1,5 +1,16 @@
 <ion-content padding>
-  <form [formGroup]="postForm">
+  <form [formGroup]="postForm" (submit)="savePost()">
+    <ion-header>
+      <ion-toolbar color="dark">
+        <ion-title class="ion-text-center">{{ (postId) ? 'Edit' : 'New'}} Post</ion-title>
+        <ion-buttons slot="start">
+          <ion-button (click)="confirmClose()"><ion-icon name="backspace"></ion-icon></ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+          <ion-button type="submit" [disabled]="!postForm.valid">Save</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
     <ion-list>
         <ion-item>
             <ion-label position="stacked">Title</ion-label>
@@ -10,14 +21,14 @@
       <ion-item>
           <ion-label position="stacked">Category</ion-label>
           <ion-select formControlName="categoryId" interface="action-sheet">
-            <ion-select-option *ngFor="let category of categories | orderBy: 'name'" value="{{category.id}}">{{ category.name | titlecase }}</ion-select-option>
+            <ion-select-option *ngFor="let category of categories | orderBy: 'name'" [value]="category.id">{{ category.name | titlecase }}</ion-select-option>
           </ion-select>
       </ion-item>
     </ion-list>   
     <ion-list>
       <ion-item>
-          <ion-label position="stacked">Source</ion-label>
-          <ion-input formControlName="source" type="text" maxlength="30"></ion-input>
+          <ion-label position="stacked">Author</ion-label>
+          <ion-input formControlName="author" type="text" maxlength="30"></ion-input>
       </ion-item>
     </ion-list>   
     <ion-list>
@@ -28,3 +39,9 @@
     </ion-list>
   </form>
 </ion-content>
+
+<ion-fab vertical="bottom" horizontal="center" slot="fixed" *ngIf="postId">
+  <ion-fab-button (click)="confirmDelete()" color="danger">
+    <ion-icon name="trash"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

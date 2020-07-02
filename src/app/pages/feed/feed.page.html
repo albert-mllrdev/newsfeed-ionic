@@ -1,4 +1,4 @@
-<app-categories-menu (setCategoryEvent)='setFilterCategory($event)' [posts]="posts"></app-categories-menu>
+<app-categories-menu></app-categories-menu>
 <ion-header>
   <ion-toolbar color="dark">
     <ion-title>
@@ -10,11 +10,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" color="medium">
-  <div id="container">
-    <ion-searchbar showCancelButton="never" (ionChange)="setFilterSearch($event)" color="light"></ion-searchbar>
-    <app-post-list [posts]="posts" (needReloadEvent)="loadPosts()"></app-post-list>
-  </div>
-
+  <ng-container id="container">
+    <app-post-list-wrapper [posts]="posts"></app-post-list-wrapper>
+  </ng-container>  
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button (click)="newPost()" color="success">
       <ion-icon name="add"></ion-icon>

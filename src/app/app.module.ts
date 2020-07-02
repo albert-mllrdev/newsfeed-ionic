@@ -10,10 +10,19 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from '@albert/store/reducer';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule, 
+    HttpClientModule,
+    StoreModule.forRoot({ filter : counterReducer })
+  ],
   providers: [
     StatusBar,
     SplashScreen,

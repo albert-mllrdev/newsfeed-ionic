@@ -3,46 +3,40 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IPost } from '@interfaces/post';
-import { ICategory } from '@interfaces/category';
+import { IPost } from '@albert/interfaces/IPost';
+import { ICategory } from '@albert/interfaces/ICategory';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostDataService {
-
-  hasInitialLoad = false;
-  posts: IPost [] = [];
-  categories: ICategory [] = [];
+  private isInitialized  = false;
+  private posts: IPost [] = [];
+  private categories: ICategory [] = [];
 
   constructor(private http: HttpClient) {  }
   
   getPosts(): Observable<IPost[]> {
-    if (this.hasInitialLoad){
+    if (this.isInitialized ){
       return of(this.posts);
     }
 
     return this.http.get<IPost[]>('assets/posts.json')
       .pipe(
         map((posts: IPost[]) => {
-          this.hasInitialLoad = true;
+          this.isInitialized = true;
           this.posts = posts;
           return posts;
         })
       );
   }
 
-  getPost(postId: number): Observable<IPost> {
-    return this.getPosts().pipe(
-      map((posts: IPost[]) => {
-        const [postResult] = posts.filter((post: IPost)  => post.id === postId);
-        return postResult;
-      })
-    );
-  }  
+  getPost(postId: number): IPost | undefined {
+    return this.posts.find((post: IPost)  => post.id === postId);
+  }
 
   savePost(formData: IPost) {
-    const [postResult] = this.posts.filter((post: IPost)  => post.id === formData.id);
+    const postResult = this.posts.find((post: IPost)  => post.id === formData.id);
     if (postResult){
       this.posts[this.posts.indexOf(postResult)] = {... formData};
     } else {

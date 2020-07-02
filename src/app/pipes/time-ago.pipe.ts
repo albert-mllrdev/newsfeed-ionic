@@ -1,42 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { formatDistanceToNowStrict } from 'date-fns';
 
 @Pipe({
   name: 'timeAgo',
   pure: false
 })
 export class TimeAgoPipe implements PipeTransform {
-  transform(value: Date, exponent?: Date): string {
+  transform(value: Date): string {
     const sourceDate = new Date(value);
-    const now = new Date();
-
-    const timeDifference = now.getTime() - sourceDate.getTime();
-
-    const seconds = Math.ceil(Math.abs((timeDifference / 1000)));
-    const minutes = Math.ceil(Math.abs(seconds / 60));
-    const hours = Math.ceil(Math.abs(minutes / 60));
-    const days = Math.ceil(Math.abs(hours / 24));
-    const months = Math.ceil(now.getMonth() - sourceDate.getMonth() + (12 * (now.getFullYear() - sourceDate.getFullYear())));
-    const years = Math.ceil(now.getFullYear() - sourceDate.getFullYear());
-
-    if (seconds < 60) {
-      return  (seconds <= 10) ? 'just now' : `${seconds} seconds ago`;
-    }     
-
-    if (minutes < 60) {
-      return (minutes === 1) ? 'a minute ago' : `${minutes} minutes ago`;
+    const timeAgo = `${formatDistanceToNowStrict(sourceDate, { addSuffix : true})}`;
+    if (timeAgo.toLowerCase() === '0 seconds ago'){
+      return 'just now';
     }
-
-    if (hours < 24) {
-      return (hours === 1) ? 'an hour ago' :  `${hours} hours ago`;
-    }
-
-    if (years < 1 && months < 1) {      
-      return (days === 1) ? 'a day ago' : `${days} days ago`;
-    }
-
-    if (years < 1) {
-      return (months < 1) ? 'a month ago' : `${months} month ago`;
-    }
-    return (years < 1) ? 'a year ago' : `${years} years ago`;
-  }
+    return timeAgo;
+   }
 }

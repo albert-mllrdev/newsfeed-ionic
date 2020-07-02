@@ -1,8 +1,7 @@
-<div *ngFor="let post of posts | orderBy: publishedAt | filterBy: postFilter | filterBy: postTextFilter">
+<ng-container *ngFor="let post of posts | orderBy: publishedAt : false">
   <app-post-list-record [post]="post" (click)="showPost(post.id)"></app-post-list-record>
-</div>
-
-<ion-card *ngIf="!(posts | filterBy: postFilter | filterBy: postTextFilter).length" class="ion-text-left no-records">
+</ng-container>
+<ion-card *ngIf="!posts.length" class="ion-text-left no-records">
   <ion-card-content>
     <ion-text color="danger">No records found</ion-text>
   </ion-card-content>

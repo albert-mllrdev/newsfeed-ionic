@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IPost } from '@interfaces/post';
-import { PostDataService } from '@data/post.data.service';
-import { ModalController, IonContent } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { ModalController, Platform, IonRouterOutlet } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
+const { App } = Plugins;
 
-import { PostListComponent } from '@lists/post.list/post.list.component';
-import { PostModalComponent } from '@modals/post.modal/post.modal.component';
+import { IPost } from '@albert/interfaces/IPost';
+import { PostDataService } from '@albert/data/post.data.service';
+import { PostModalComponent } from '@albert/modals/post.modal/post.modal.component';
 
 @Component({
   selector: 'app-feed',
@@ -13,17 +14,25 @@ import { PostModalComponent } from '@modals/post.modal/post.modal.component';
 })
 export class FeedPage implements OnInit {
   posts: IPost[] = [];
-
-  @ViewChild(PostListComponent) postList!: PostListComponent;
-  @ViewChild(IonContent) ionContent!: IonContent;
   
   constructor(
     private postDataService: PostDataService,
-    public modalController: ModalController
-  ) {}
+    public modalController: ModalController,
+    private platform: Platform,
+    private routerOutlet: IonRouterOutlet
+  ) { }
 
   ngOnInit() {
+    this.bindBackButton();
     this.loadPosts();
+  }
+
+  bindBackButton(){
+    this.platform.backButton.subscribeWithPriority(-1, () => {
+      if (!this.routerOutlet.canGoBack()) {
+        App.exitApp();
+      }
+    });
   }
 
   loadPosts(){
@@ -35,21 +44,16 @@ export class FeedPage implements OnInit {
   async newPost() {    
     const modal = await this.modalController.create({
       component: PostModalComponent,
-      componentProps: {
-        defaultCategoryId: this.postList.getCategoryFilter()
+      componentProps: { }
+    });
+
+    modal.onDidDismiss().then((returnData) => {
+      if (returnData?.data.needReload) {
+        this.loadPosts();
       }
     });
 
     return await modal.present();
-  }
-
-  setFilterCategory(categoryId: number){
-    this.ionContent.scrollToTop();
-    this.postList.setCategoryFilter(categoryId);
-  }
-
-  setFilterSearch(event: CustomEvent){
-    this.postList.setFilterSearch(event.detail.value);
   }
 }
 

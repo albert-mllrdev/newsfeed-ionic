@@ -1,0 +1,2 @@
+<ion-searchbar showCancelButton="never" (ionChange)="setFilterSearch($event)" color="light"></ion-searchbar>
+<app-post-list (reload)="reload()" [posts]="posts | filterBy: postFilter"></app-post-list>

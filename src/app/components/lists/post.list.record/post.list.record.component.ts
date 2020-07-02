@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IPost } from '@interfaces/post';
+
+import { IPost } from '@albert/interfaces/IPost';
 
 @Component({
   selector: 'app-post-list-record',
@@ -8,6 +9,8 @@ import { IPost } from '@interfaces/post';
 })
 export class PostListRecordComponent implements OnInit {
   @Input() post!: IPost;
+
+  allowedVisibleContentLength = 175;
   showComments = false;
 
   constructor() { }
