@@ -20,6 +20,6 @@ const _counterReducer = createReducer(initialState,
   })
 );
 
-export function counterReducer(state: IPostFilter | undefined, action: Action) {
+export function counterReducer(state: IPostFilter = initialState , action: Action) {
   return _counterReducer(state, action);
 }
