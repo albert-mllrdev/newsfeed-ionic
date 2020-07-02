@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, FormControl } from '@angular/forms';
 
 import { IComment } from '@albert/interfaces/IComment';
 
@@ -11,22 +11,20 @@ import { IComment } from '@albert/interfaces/IComment';
 export class CommentsListComponent implements OnInit {
   @Input() comments: IComment[] = [];
 
-  commentForm: FormGroup = this.formBuilder.group({
-    comment: ['', Validators.required]
-  });
+  comment: FormControl = this.formBuilder.control('', Validators.required);
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() { }
 
   saveComment(){
-    if (this.commentForm.valid){
+    if (this.comment.valid){
       const newComment: IComment =  {
-        text: this.commentForm.value.comment,
+        text: this.comment.value,
         publishedAt: new Date()
       };
       this.comments.push(newComment);
-      this.commentForm.setValue({comment: ''});
+      this.comment.setValue('');
     }
   }
 }
