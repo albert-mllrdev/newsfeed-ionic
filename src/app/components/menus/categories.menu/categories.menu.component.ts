@@ -30,7 +30,7 @@ export class CategoryMenuComponent implements OnInit {
   }
 
   watchCategoryID(){
-    this.store.pipe(select('filter')).subscribe(filter =>{
+    this.store.pipe(select('filter')).subscribe(filter => {
       if (filter.categoryId) {
         this.currentCategoryId = filter.categoryId;
       }
