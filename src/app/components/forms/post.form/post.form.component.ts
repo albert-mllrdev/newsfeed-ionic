@@ -49,8 +49,9 @@ export class PostFormComponent implements OnInit {
       }
     }    
     else {      
-      this.store.pipe(select('filter')).subscribe(filter => {        
-        this.postForm.patchValue({ categoryId: (filter.categoryId && filter.categoryId !== 0) ? filter.categoryId : 1 });
+      this.store.pipe(select('filter')).subscribe(filter => {
+        const categoryIdValue = (filter?.categoryId !== 0) ? filter.categoryId : 1;
+        this.postForm.patchValue({ categoryId: categoryIdValue });
       });
     }
   }
@@ -62,7 +63,8 @@ export class PostFormComponent implements OnInit {
   }  
 
   savePost(){
-    this.showToast((this.postForm.value.id) ? 'Post saved' : 'Post added');
+    const postMessage = (this.postForm.value.id) ? 'Post saved' : 'Post added';
+    this.showToast(postMessage);
     this.postDataService.savePost(this.postForm.value);
     this.closeForm.emit(true);
   }
