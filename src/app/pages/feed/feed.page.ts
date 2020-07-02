@@ -48,7 +48,7 @@ export class FeedPage implements OnInit {
     });
 
     modal.onDidDismiss().then((returnData) => {
-      if (returnData !== null && returnData.data.needReload) {
+      if (returnData?.data.needReload) {
         this.loadPosts();
       }
     });
