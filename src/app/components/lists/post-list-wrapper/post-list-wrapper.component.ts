@@ -13,8 +13,7 @@ import { setFilterText } from '@albert/store/actions';
 export class PostListWrapperComponent implements OnInit {
   @Input() posts: IPost[] = [];
 
-  postFilter = { categoryId: '' };
-  postTextFilter = { $or: [{ title: ''}, { author: '' }, { content: '' }] };
+  postFilter = { categoryId : '', $or: [{ title: ''}, { author: '' }, { content: '' }] };
 
   constructor(
     private store: Store<{ filter: IPostFilter }>,
@@ -30,9 +29,13 @@ export class PostListWrapperComponent implements OnInit {
 
   watchFilterProperty(){
     this.store.pipe(select('filter')).subscribe(filter => {
-      this.postFilter.categoryId = (filter.categoryId) ? filter.categoryId.toString() : '';
-
-      this.postTextFilter = { 
+      let categoryIdFilter = filter.categoryId?.toString() ?? '';
+      if (categoryIdFilter === '0'){
+        categoryIdFilter = '';
+      }
+      
+      this.postFilter = { 
+        categoryId: categoryIdFilter,
         $or: [{ title: filter.searchText }, { author: filter.searchText }, { content: filter.searchText }] 
       };
     });
